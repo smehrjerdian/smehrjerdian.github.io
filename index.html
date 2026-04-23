@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sayeed Mehrjerdian — Product, Growth, Builder</title>
+  <meta name="description" content="Sayeed Mehrjerdian (Atown). Senior Product Manager. Head of Growth, Crypto at Lazer. Former Foundation/Rodeo, Doodles experiments lead, Metaseed Labs." />
+  <meta name="theme-color" content="#0F1F15" />
+
+
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sayeed Mehrjerdian — Product, Growth, Builder" />
+  <meta property="og:description" content="Shipping consumer crypto, agentic trading, and onchain experiences since before it was cool." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (use the Doodle pfp) -->
+  <link rel="icon" type="image/jpeg" href="assets/dood-pfp.jpg" />
+  <link rel="apple-touch-icon" href="assets/dood-pfp.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Grain + grid background layers -->
+  <div class="bg bg-grid" aria-hidden="true"></div>
+  <div class="bg bg-grain" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__mark" aria-label="Home">
+        <img src="assets/dood-pfp.jpg" alt="Atown pfp" class="nav__pfp" />
+        <span class="nav__mark-text">SAYEED MEHRJERDIAN</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#work">Work</a>
+        <a href="#clients">Clients</a>
+        <a href="#building">Building</a>
+        <a href="#made">Hands-on</a>
+        <a href="#stack">Stack</a>
+        <a href="#goods">Goods</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav__social" aria-label="Social links">
+        <a class="nav__social-link" href="https://x.com/AtownBrown" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.53 3H20.7l-6.92 7.91L22 21h-6.36l-4.98-6.51L4.9 21H1.73l7.4-8.46L1.5 3h6.5l4.5 5.95L17.53 3Zm-1.11 16.2h1.76L7.68 4.73H5.8L16.42 19.2Z"/></svg>
+        </a>
+        <a class="nav__social-link" href="https://farcaster.xyz/atown" target="_blank" rel="noopener" aria-label="Farcaster">
+          <svg viewBox="0 0 1000 1000" aria-hidden="true"><path fill="currentColor" d="M257.778 155.556h484.444v688.888h-71.11V528.889h-.696c-7.86-87.212-81.156-155.556-170.416-155.556-89.26 0-162.556 68.344-170.417 155.556h-.697v315.555h-71.11V155.556Z"/><path fill="currentColor" d="m128.889 253.333 28.889 97.778h24.444v395.556c-12.273 0-22.222 9.949-22.222 22.222v26.667h-4.444c-12.273 0-22.223 9.949-22.223 22.222v26.667h248.889v-26.667c0-12.273-9.949-22.222-22.222-22.222h-4.445v-26.667c0-12.273-9.949-22.222-22.222-22.222h-26.666V253.333h-177.778ZM675.556 746.667c-12.273 0-22.223 9.949-22.223 22.222v26.667h-4.444c-12.273 0-22.222 9.949-22.222 22.222v26.667H875.555v-26.667c0-12.273-9.949-22.222-22.222-22.222h-4.444v-26.667c0-12.273-9.95-22.222-22.223-22.222V351.111h24.445l28.889-97.778h-177.778v493.334h-26.666Z"/></svg>
+        </a>
+        <a class="nav__social-link" href="https://www.linkedin.com/in/smehrjerdian" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18.34H5.67V9.67h2.67v8.67ZM7 8.5A1.55 1.55 0 1 1 8.55 6.95 1.55 1.55 0 0 1 7 8.5Zm11.34 9.84h-2.67v-4.67c0-1.11-.02-2.54-1.55-2.54s-1.78 1.21-1.78 2.46v4.75H9.67V9.67h2.56v1.19h.04a2.81 2.81 0 0 1 2.53-1.39c2.71 0 3.21 1.78 3.21 4.1v4.77Z"/></svg>
+        </a>
+        <a class="nav__social-link" href="https://github.com/smehrjerdian/" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.97-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.19a11.05 11.05 0 0 1 5.8 0c2.21-1.5 3.18-1.19 3.18-1.19.63 1.6.23 2.78.12 3.07.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.26 5.7.41.35.78 1.05.78 2.12 0 1.53-.01 2.76-.01 3.13 0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__meta">
+      <span class="mono">[ 001 / PORTFOLIO v2026 ]</span>
+      <span class="mono">ATL, USA · 33.7490° N, 84.3880° W</span>
+    </div>
+
+    <div class="hero__top">
+      <div class="hero__title-wrap">
+        <h1 class="hero__title">
+          <span class="hero__line">Sayeed</span>
+          <span class="hero__line hero__line--outline">Mehrjerdian</span>
+        </h1>
+      </div>
+
+      <div class="deck" aria-label="Flip through Sayeed's IRL and onchain profiles">
+        <a class="deck__card deck__card--irl" data-i="0"
+           href="https://www.linkedin.com/in/smehrjerdian"
+           target="_blank" rel="noopener">
+          <img src="assets/headshot.jpg" alt="Sayeed Mehrjerdian (IRL)" />
+          <div class="deck__card-meta">
+            <span class="mono">IRL · LINKEDIN →</span>
+            <span class="deck__card-name">Sayeed Mehrjerdian</span>
+          </div>
+        </a>
+        <a class="deck__card deck__card--onchain" data-i="1"
+           href="https://x.com/AtownBrown"
+           target="_blank" rel="noopener">
+          <img src="assets/dood-pfp.jpg" alt="Atown (onchain)" />
+          <div class="deck__card-meta">
+            <span class="mono">ONCHAIN · X →</span>
+            <span class="deck__card-name">@AtownBrown</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__sub">
+      <p class="hero__tagline">
+        Senior Product Leader. Builder.<br />
+        <em>Early to every wave worth being early to.</em>
+      </p>
+      <div class="hero__bio">
+        <p>
+          Currently Head of Growth, Crypto at
+          <a href="https://www.lazertechnologies.com/industries/crypto" target="_blank" rel="noopener"><strong>Lazer Technologies</strong></a>.
+          Previously at
+          <a href="https://www.foundation-labs.xyz/rodeo" target="_blank" rel="noopener"><strong>Foundation</strong></a>
+          shipping <em>Rodeo.club</em>, Inkubator experiments lead at
+          <a href="https://inkubator.doodles.app/" target="_blank" rel="noopener"><strong>Doodles</strong></a>, and Founder &amp; Head of
+          Operations, BD &amp; Product at
+          <a href="https://www.metaseedlabs.com/" target="_blank" rel="noopener"><strong>Metaseed Labs</strong></a>.
+          Industrial &amp; Systems Engineer out of
+          <strong>Georgia Tech</strong>. 15+ years in product, 6+ years
+          building onchain.
+        </p>
+        <p class="hero__bio-small mono">
+          I build consumer crypto, agentic products, and onchain experiences that
+          treat users like adults and still feel delightful.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero__ticker">
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>LAZER</span><span>·</span>
+          <span>FOUNDATION / RODEO</span><span>·</span>
+          <span>DOODLES</span><span>·</span>
+          <span>METASEED LABS</span><span>·</span>
+          <span>EMERGE</span><span>·</span>
+          <span>CAPACITR</span><span>·</span>
+          <span>IACCESS LIFE</span><span>·</span>
+          <span>WARNER MEDIA</span><span>·</span>
+          <span>PURCHASING POWER</span><span>·</span>
+          <span>GEORGIA TECH</span><span>·</span>
+          <span>LAZER</span><span>·</span>
+          <span>FOUNDATION / RODEO</span><span>·</span>
+          <span>DOODLES</span><span>·</span>
+          <span>METASEED LABS</span><span>·</span>
+          <span>EMERGE</span><span>·</span>
+          <span>CAPACITR</span><span>·</span>
+          <span>IACCESS LIFE</span><span>·</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOW PANEL -->
+  <section class="now" id="now">
+    <div class="section-label">
+      <span class="mono">§ 01</span>
+      <span class="mono">NOW</span>
+    </div>
+    <div class="now__grid">
+      <div class="now__card">
+        <div class="now__card-brand">
+          <img src="assets/lazer-icon.png" alt="Lazer" />
+        </div>
+        <div class="now__card-tag mono">CURRENT</div>
+        <h3>Head of Growth, Crypto</h3>
+        <p class="now__company">Lazer Technologies</p>
+        <p class="now__date mono">OCT 2024 — PRESENT</p>
+        <p class="now__body">
+          Scoping agentic trading, wallet SDKs, stablecoin card programs,
+          collectible mints, prediction markets, and consumer marketing
+          surfaces for partners across the crypto stack. Landing and
+          overseeing engagements with Coinbase, Dynamic, Privy, Crossmint,
+          Monad, Mantle, Ava Labs, Courtyard, Bera Baddies, OpenSea and more.
+        </p>
+      </div>
+      <div class="now__card">
+        <div class="now__card-brand">
+          <img src="assets/emerge-avatar.png" alt="Emerge" />
+        </div>
+        <div class="now__card-tag mono">BUILDING</div>
+        <h3>Emerge &amp; Emergibles</h3>
+        <p class="now__company">Farcaster-native AI content + coining</p>
+        <p class="now__date mono">2025 — PRESENT</p>
+        <p class="now__body">
+          A Farcaster mini-app letting anyone generate AI content and coin it
+          directly to Zora. Emergibles extends that into collectible,
+          tradeable drops powered by social distribution.
+        </p>
+      </div>
+      <div class="now__card">
+        <div class="now__card-brand now__card-brand--capacitr">
+          <img src="assets/Capacitr C Badge - Inverse 1.png" alt="Capacitr" />
+        </div>
+        <div class="now__card-tag mono">BUILDING</div>
+        <h3>Capacitr</h3>
+        <p class="now__company">Agent-native market research</p>
+        <p class="now__date mono">2026 — PRESENT</p>
+        <p class="now__body">
+          An agent that reads news and social, synthesizes a take, and surfaces
+          the best way to express it across prediction markets, perps, options,
+          and onchain spot. Research → conviction → position, in one flow.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK - EXPERIENCE TIMELINE -->
+  <section class="work" id="work">
+    <div class="section-label">
+      <span class="mono">§ 02</span>
+      <span class="mono">WORK HISTORY</span>
+    </div>
+
+    <div class="work__list">
+
+      <!-- LAZER -->
+      <article class="work__item" data-era="lazer">
+        <header class="work__item-head">
+          <div class="work__item-logo">
+            <img src="assets/lazer-logo.svg" alt="Lazer Technologies" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Head of Growth, Crypto</h2>
+            <p class="work__item-company">
+              <a href="https://www.lazertechnologies.com/industries/crypto" target="_blank" rel="noopener">Lazer Technologies ↗</a> · Remote
+            </p>
+          </div>
+          <div class="work__item-date mono">OCT 2024 — NOW</div>
+        </header>
+        <div class="work__item-body">
+          <p>
+            I run crypto at Lazer, one of the most respected product &amp;
+            engineering shops in the space. My job is two things: land
+            partnerships with the best teams in crypto, and make sure we ship
+            product for them that genuinely moves their roadmap forward.
+          </p>
+          <p>
+            Over the last year I've closed and oversaw engagements with:
+          </p>
+          <ul class="tag-list">
+            <li><strong>Coinbase</strong> — mobile &amp; motion design on the Wallet product</li>
+            <li><strong>Dynamic</strong> — Swift SDK, wallet infra</li>
+            <li><strong>Privy</strong> — integration work</li>
+            <li><strong>Courtyard</strong> — native indexer + orderbook rebuild</li>
+            <li><strong>Monad</strong> — developer hub</li>
+            <li><strong>Mantle</strong> — developer hub</li>
+            <li><strong>Ava Labs (AVAX)</strong> — marketing activation app</li>
+            <li><strong>Bera Baddies</strong> — social portal</li>
+            <li><strong>Moto Card</strong> — agentic commerce for card holders</li>
+            <li><strong>Glue Network</strong> — infra + consumer mobile trading app</li>
+            <li><strong>OpenSea</strong> — partner NFT drops (Arena Club, Pranksy)</li>
+            <li><strong>Crossmint</strong>, and more</li>
+          </ul>
+          <p class="work__item-subhead mono">CORE COMPETENCIES — PRODUCT LEVEL</p>
+          <p>
+            Alongside partnership work I scope SDK enhancements for dev
+            tooling — builder code SDKs, wallet SDKs — and consumer-facing
+            programs across stablecoin cards, stablecoin orchestration,
+            consumer marketing experiences, collectible mints, AI content
+            creation automation, prediction markets, perps trading, fungible
+            token trading, staking, DeFi, AI agents, and trading agents. It's
+            the spread I'm strongest across at a product level, and where
+            most of my 0→1 reps live.
+          </p>
+        </div>
+      </article>
+
+      <!-- FOUNDATION / RODEO -->
+      <article class="work__item" data-era="foundation">
+        <header class="work__item-head">
+          <div class="work__item-logo">
+            <img src="assets/rodeo_icon.svg" alt="Rodeo.club / Foundation" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Senior Product Manager</h2>
+            <p class="work__item-company">
+              <a href="https://www.foundation-labs.xyz/rodeo" target="_blank" rel="noopener">Foundation / Rodeo.club ↗</a> · Remote
+            </p>
+          </div>
+          <div class="work__item-date mono">FEB 2024 — OCT 2024</div>
+        </header>
+        <div class="work__item-body">
+          <p>
+            I led product for <strong>Rodeo.club</strong> — Foundation's new
+            onchain social network, built as a "social sketchbook" for
+            creatives on <strong>Base</strong>. Every post becomes a
+            collectible NFT; creators earn ETH every time their work is
+            collected, and collectors earn rewards when the work they
+            supported gets discovered by others. Social graph + primary
+            market in one surface.
+          </p>
+          <p>
+            The features I shipped defined the product: Farcaster profile
+            + social-graph imports, auto-casting to channels, public minting
+            via frames, profile search, social comments, mentions, replies,
+            and threading.
+          </p>
+          <p>
+            I was also product lead for the <strong>"Babes" Onchain Summer
+            2024 activation</strong> for Petra Voice — one of the first
+            high-profile campaigns to support the Coinbase Smart Wallet:
+          </p>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat__num">29.3K</div>
+              <div class="stat__label mono">NFTs minted</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">7.1K</div>
+              <div class="stat__label mono">Unique holders</div>
+            </div>
+            <div class="stat">
+              <div class="stat__num">51%</div>
+              <div class="stat__label mono">Conversion rate</div>
+            </div>
+          </div>
+          <p class="work__item-links mono">
+            <a href="https://rodeo.club/" target="_blank" rel="noopener">↗ rodeo.club</a>
+            <a href="https://www.foundation-labs.xyz/rodeo" target="_blank" rel="noopener">↗ case study</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- DOODLES -->
+      <article class="work__item" data-era="doodles">
+        <header class="work__item-head">
+          <div class="work__item-logo work__item-logo--inkubator">
+            <img src="assets/new_inkubator_logo.png" alt="Inkubator by Doodles" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Inkubator Experiments Lead</h2>
+            <p class="work__item-company">
+              <a href="https://inkubator.doodles.app/" target="_blank" rel="noopener">Doodles / Inkubator ↗</a> · Remote
+            </p>
+          </div>
+          <div class="work__item-date mono">FEB 2024 — JAN 2025</div>
+        </header>
+        <div class="work__item-body">
+          <p>
+            Ran the <strong>Inkubator</strong> — Doodles' internal experimentation
+            process — for a year. My job was to take bets on new consumer and
+            community product ideas, stand them up quickly, and learn in public.
+          </p>
+          <p>Notable Inkubator projects I led:</p>
+          <ul class="feature-list">
+            <li>
+              <strong>Rainbow Zine</strong> — a Doodles publication experiment
+              bringing the IP into editorial, community-written form.
+              <span class="mono"><a href="https://rainbowzine.xyz/" target="_blank" rel="noopener">↗ rainbowzine.xyz</a></span>
+            </li>
+            <li>
+              <strong>Social Asset Builder</strong> — a tool letting holders
+              generate personal social assets from their Doodles, turning
+              ownership into shareable identity.
+              <span class="mono"><a href="https://builder.doodles.app/" target="_blank" rel="noopener">↗ builder.doodles.app</a></span>
+            </li>
+            <li>
+              Smaller bets across drops, community tooling, and
+              distribution experiments.
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- METASEED -->
+      <article class="work__item" data-era="metaseed">
+        <header class="work__item-head">
+          <div class="work__item-logo">
+            <img src="assets/metaseed_icon.svg" alt="Metaseed Labs" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Founder &amp; Head of Operations, BD &amp; Product</h2>
+            <p class="work__item-company">
+              <a href="https://www.metaseedlabs.com/" target="_blank" rel="noopener">Metaseed Labs ↗</a> · Remote
+            </p>
+          </div>
+          <div class="work__item-date mono">JUL 2021 — PRESENT</div>
+        </header>
+        <div class="work__item-body">
+          <p>
+            I founded and run Metaseed Labs, a build shop that has been
+            behind some of the most culturally meaningful drops and onchain
+            products of the last few years. We've written product specs and
+            delivered custom smart contracts, mint experiences, dynamic NFT
+            metadata, wallet + on/off-ramp integrations, and dApp infra
+            across a wall of legitimate names. Scroll the wall below ⤵
+          </p>
+        </div>
+      </article>
+
+      <!-- IACCESS LIFE (founder era) -->
+      <article class="work__item" data-era="iaccess">
+        <header class="work__item-head">
+          <div class="work__item-logo work__item-logo--iaccess">
+            <img src="assets/iaccess-logo.png" alt="iAccess Life" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Co-founder &amp; Product</h2>
+            <p class="work__item-company">
+              <a href="https://cloud.google.com/customers/iaccess-life" target="_blank" rel="noopener">iAccess Life ↗</a> · Atlanta
+            </p>
+          </div>
+          <div class="work__item-date mono">2017 — 2023</div>
+        </header>
+        <div class="work__item-body">
+          <p>
+            I co-founded <strong>iAccess Life</strong>, a mobile accessibility
+            review platform helping the disability community rate, map, and
+            share real-world accessibility data on businesses and venues. It
+            grew into DBE &amp; DEI partnerships with brands like MARTA and
+            spun out <em>Voice by iAccess</em>, an enterprise CX and training
+            product. iAccess is where I learned how to run product, fundraise,
+            ship apps on iOS and Android, and sell into civic + enterprise
+            buyers at the same time.
+          </p>
+        </div>
+      </article>
+
+      <!-- EARLIER -->
+      <article class="work__item work__item--compact" data-era="earlier">
+        <header class="work__item-head">
+          <div class="work__item-logo work__item-logo--warner">
+            <img src="assets/warnermedia-icon.webp" alt="WarnerMedia" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Technical Product Manager</h2>
+            <p class="work__item-company">
+              <a href="https://publicidad.wbd.com/en/solutions/audience-solutions/targeting-now/" target="_blank" rel="noopener">WarnerMedia ↗</a> · Atlanta
+            </p>
+          </div>
+          <div class="work__item-date mono">FEB 2020 — MAR 2022</div>
+        </header>
+        <div class="work__item-body">
+          <p>Led product for the Data Science team, building internal
+          audience targeting and ad-delivery tools for enterprise sales.</p>
+        </div>
+      </article>
+
+      <article class="work__item work__item--compact" data-era="earlier">
+        <header class="work__item-head">
+          <div class="work__item-logo">
+            <img src="assets/purchasing power.webp" alt="Purchasing Power" />
+          </div>
+          <div class="work__item-headline">
+            <h2>Product Manager, Digital Conversion</h2>
+            <p class="work__item-company">
+              <a href="https://www.purchasingpower.com/" target="_blank" rel="noopener">Purchasing Power ↗</a> · Atlanta
+            </p>
+          </div>
+          <div class="work__item-date mono">JAN 2017 — FEB 2020</div>
+        </header>
+        <div class="work__item-body">
+          <p>Owned conversion, checkout, and cart across e-commerce web
+          and native iOS/Android apps.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- METASEED · DROPS & BUILDS -->
+  <section class="wall" id="metaseed-wall">
+    <div class="section-label">
+      <span class="mono">§ 03</span>
+      <span class="mono">METASEED LABS · DROPS &amp; BUILDS</span>
+    </div>
+    <p class="wall__intro">
+      A tour through the IPs, artists, and brands we've built with at
+      Metaseed Labs. Custom contracts, mint mechanics, dynamic metadata,
+      IRL claim flows, NFC taps, drop experiences — shipped end-to-end,
+      mostly alongside culture-shaping partners.
+    </p>
+    <div class="wall__grid">
+
+      <!-- ALIEN FRENS -->
+      <article class="wall__card" data-kind="pfp">
+        <div class="wall__card-image">
+          <img src="assets/alien frens.png" alt="Alien Frens" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">001</div>
+          <h3>Alien Frens</h3>
+          <p class="mono">PFP · Ecosystem</p>
+          <p class="wall__card-body">
+            Built out the Alien Frens NFT ecosystem end-to-end — 3+
+            collections with customizable NFTs, burn-and-redeem mechanics,
+            and dynamic metadata that hands control of each NFT's destiny
+            back to the holder.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>AF Original Drop</span><span>UFOs (Customizable)</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- CHIMPERS -->
+      <article class="wall__card" data-kind="pfp">
+        <div class="wall__card-image">
+          <img src="assets/chimpers_cards.webp" alt="Chimpers trading cards" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">002</div>
+          <h3>Chimpers</h3>
+          <p class="mono">PFP · Trading Cards on Base</p>
+          <p class="wall__card-body">
+            Shipped the Chimpers trading card app on Base — buy packs, rip
+            them for collectible digital cards (with physical redeemables
+            in some cases), and tap NFC at IRL events to unlock special
+            edition drops.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>Packs &amp; Rips</span><span>NFC IRL Drops</span>
+            <a href="https://cards.chimpers.com/" target="_blank" rel="noopener">↗ cards.chimpers.com</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- CREATURE WORLD / DANNY COLE -->
+      <article class="wall__card" data-kind="art">
+        <div class="wall__card-image">
+          <img src="assets/crowd.png" alt="Crowd by Danny Cole / Creature World" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">003</div>
+          <h3>Creature World</h3>
+          <p class="mono">Danny Cole · Generative Art</p>
+          <p class="wall__card-body">
+            Supported Danny Cole on <strong>Crowd</strong> — a generative
+            open-edition experiment live for just 24 hours. The sale broke
+            marketplace records with 38,000+ works sold in a single day.
+            Creature World is Danny's universe: NYFW, Art Basel,
+            Coachella, and 100,000+ collectors.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>Open Edition</span><span>Ongoing Burn</span>
+            <a href="https://burn.creature.world/" target="_blank" rel="noopener">↗ burn.creature.world</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- FEWOCIOUS -->
+      <article class="wall__card" data-kind="art">
+        <div class="wall__card-image">
+          <img src="assets/fewo_fashion.webp" alt="FEWOCiOUS Digital Fashion" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">004</div>
+          <h3>FEWOCiOUS · Digital Fashion</h3>
+          <p class="mono">Artist · Fewo World</p>
+          <p class="wall__card-body">
+            Drop tooling + collector experience for <strong>Fewo Digital
+            Fashion</strong> — ERC-1155 wearables equippable to Fewos.
+            Each design is redeemable by burning a matching-tier Fewo
+            Flower. Built for one of the generation's defining digital
+            artists.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>ERC-1155 Wearables</span><span>Burn-to-Redeem</span>
+            <a href="https://opensea.io/collection/fewo-digital-fashion" target="_blank" rel="noopener">↗ opensea</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- CHRIS BROWN / BREEZYVERSE -->
+      <article class="wall__card" data-kind="music">
+        <div class="wall__card-image">
+          <img src="assets/breezyverse.jpeg" alt="Chris Brown Breezyverse" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">005</div>
+          <h3>Chris Brown · Breezyverse</h3>
+          <p class="mono">Music · Artist Universe</p>
+          <p class="wall__card-body">
+            Launched <strong>The Breezyverse</strong> drop — unique NFTs
+            with real utilities: meet &amp; greets, claimable tour-worn
+            merch, and one-of-a-kind digital memorabilia. A new way for
+            fans to engage with their favorite artist in Web3.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>Breezyverse Drop</span><span>3D Renders</span><span>Tour Utilities</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- LYRICAL LEMONADE -->
+      <article class="wall__card" data-kind="music">
+        <div class="wall__card-image">
+          <img src="assets/the carton lyrical lemonade.png" alt="Lyrical Lemonade — The Carton" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">006</div>
+          <h3>Lyrical Lemonade · The Carton</h3>
+          <p class="mono">Music · Festival Tech</p>
+          <p class="wall__card-body">
+            Built the <strong>Summer Smash Ticket Claim</strong> — an IRL
+            event flow that let attendees claim NFT tickets via Chainpass
+            and tap into the live concert experience with onchain
+            credentials. Culture-native mint mechanics for one of the most
+            trusted brands in music.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>Carton Drop</span><span>Chainpass</span><span>IRL Execution</span>
+            <a href="https://www.l3monworldwide.com/" target="_blank" rel="noopener">↗ l3monworldwide</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- IMAX -->
+      <article class="wall__card" data-kind="brand">
+        <div class="wall__card-image">
+          <img src="assets/imax.jpg" alt="IMAX theater" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">007</div>
+          <h3>IMAX</h3>
+          <p class="mono">Brand · Cinema</p>
+          <p class="wall__card-body">
+            Built an <strong>IRL NFT Collectible Claim</strong> for IMAX —
+            a web app that transforms the cinema experience by tying
+            authenticated digital collectibles to patrons' favorite
+            blockbuster moments across the IMAX theater chain.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>Strategic UX/UI</span><span>iOS &amp; Android</span><span>IRL Claim Flow</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- VINNIE HAGER -->
+      <article class="wall__card" data-kind="art">
+        <div class="wall__card-image">
+          <img src="assets/letters.gif" alt="Vinnie Hager · Letters" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">008</div>
+          <h3>Vinnie Hager · Letters</h3>
+          <p class="mono">New Media · 1,000 Hand-Drawn JPEGs</p>
+          <p class="wall__card-body">
+            Supported Vinnie Hager on <strong>Letters</strong> and his
+            ongoing <em>Diary</em> projects — 1,000 hand-drawn digital
+            artworks that weave mark-making and tagging with repetition.
+            Drawing from the "envelope" as a vessel for intimate messages,
+            these flat compositions are preserved on Ethereum, marrying
+            manual immediacy with permanent distributed storage.
+            <em>Send more mail.</em>
+          </p>
+          <p class="wall__card-tags mono">
+            <span>Letters (1,000)</span><span>Diary</span>
+            <a href="https://www.vinniehager.com/letters" target="_blank" rel="noopener">↗ vinniehager.com/letters</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- GUNSLINGERS -->
+      <article class="wall__card" data-kind="pfp">
+        <div class="wall__card-image">
+          <img src="assets/gunslinger_new.gif" alt="Gunslingers NFT" loading="lazy" />
+        </div>
+        <div class="wall__card-meta">
+          <div class="wall__card-ix mono">009</div>
+          <h3>Gunslingers</h3>
+          <p class="mono">PFP · Wild West · 7,777</p>
+          <p class="wall__card-body">
+            <em>What in tarnation?</em> 7,777 hootin' hollerin' little
+            cowpokes surviving out in Slingfield on the Ethereum
+            blockchain — programmatically generated from 400+ hand-drawn
+            traits (outfits, hats, accessories, weapons). Art by
+            <a href="https://www.andrewonorato.com/" target="_blank" rel="noopener"><strong>Andrew Onorato</strong></a>,
+            a Melbourne-based animator &amp; director whose commercial
+            work spans Billie Eilish, Childish Gambino, Doja Cat, and
+            Fallout 4.
+          </p>
+          <p class="wall__card-tags mono">
+            <span>7,777 PFPs</span><span>400+ Traits</span><span>Duels &amp; Treasure</span>
+            <a href="https://www.gunslingersnft.com/" target="_blank" rel="noopener">↗ gunslingersnft.com</a>
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- LAZER CLIENT GRID -->
+  <section class="clients" id="clients">
+    <div class="section-label">
+      <span class="mono">§ 04</span>
+      <span class="mono">LAZER · SELECTED CLIENTS</span>
+    </div>
+    <div class="clients__grid">
+      <article class="client">
+        <h3>Coinbase</h3>
+        <p class="mono">Wallet · Mobile + motion</p>
+        <p>Mobile and motion design work on the Coinbase Wallet product.</p>
+      </article>
+      <article class="client">
+        <h3>Courtyard</h3>
+        <p class="mono">NFT marketplace · Onchain collectibles</p>
+        <p>Rebuilt their indexer and orderbook natively so they could stand on their own infra.</p>
+      </article>
+      <article class="client">
+        <h3>Monad</h3>
+        <p class="mono">L1 · Developer infra</p>
+        <p>Built out their developer hub — the surface that onboards the next wave of Monad builders.</p>
+      </article>
+      <article class="client">
+        <h3>Mantle</h3>
+        <p class="mono">L2 · Developer infra</p>
+        <p>Developer hub focused on ecosystem growth and technical community building.</p>
+      </article>
+      <article class="client">
+        <h3>Dynamic</h3>
+        <p class="mono">Wallet infrastructure · SDK</p>
+        <p>Led development of their Swift SDK — deep, infrastructure-level integration work.</p>
+      </article>
+      <article class="client">
+        <h3>Ava Labs (AVAX)</h3>
+        <p class="mono">L1 · Marketing activation</p>
+        <p>Consumer marketing activation app combining blockchain mechanics with engagement loops.</p>
+      </article>
+      <article class="client">
+        <h3>Bera Baddies</h3>
+        <p class="mono">Community · Social</p>
+        <p>Built their social portal — community product expertise meets onchain infra.</p>
+      </article>
+      <article class="client">
+        <h3>Moto Card</h3>
+        <p class="mono">Consumer · Agentic commerce</p>
+        <p>Scoping an agentic commerce experience for card holders — AI that transacts on your behalf.</p>
+      </article>
+      <article class="client">
+        <h3>Glue Network</h3>
+        <p class="mono">Infra · Consumer mobile trading</p>
+        <p>Infra work plus a consumer mobile trading app built on top of the Glue stack.</p>
+      </article>
+      <article class="client">
+        <h3>OpenSea</h3>
+        <p class="mono">Marketplace · Partner NFT drops</p>
+        <p>Partner NFT drops across OpenSea (Arena Club, Pranksy, and more).</p>
+      </article>
+      <article class="client">
+        <h3>Pranksy</h3>
+        <p class="mono">Collector · Operator</p>
+        <p>Drop partner work with one of the most prolific collectors and operators in NFTs.</p>
+      </article>
+      <article class="client">
+        <h3>Crossmint</h3>
+        <p class="mono">Onboarding · Payments</p>
+        <p>Integration + product collaboration around onboarding and fiat rails.</p>
+      </article>
+      <article class="client">
+        <h3>Arena Club</h3>
+        <p class="mono">Collectibles · Sports</p>
+        <p>Partner drop + collectibles infra with the Arena Club team.</p>
+      </article>
+    </div>
+    <p class="clients__more mono">+ more — Privy, and a long tail of scoped engagements.</p>
+  </section>
+
+  <!-- BUILDING -->
+  <section class="building" id="building">
+    <div class="section-label">
+      <span class="mono">§ 05</span>
+      <span class="mono">PERSONALLY BUILDING</span>
+    </div>
+    <div class="building__grid">
+
+      <article class="build-card build-card--primary">
+        <div class="build-card__brand">
+          <img src="assets/emerge-logo.svg" alt="Emerge wordmark" />
+        </div>
+        <div class="build-card__kicker mono">EMERGE · EMERGIBLES</div>
+        <h2>Farcaster-native AI<br/>content &amp; coining.</h2>
+        <p>
+          Emerge is a Farcaster mini-app that lets anyone generate AI
+          content and coin it directly to Zora — no tab switching,
+          no separate wallet flow, no friction. Ownership and
+          distribution collapse into the same surface where the
+          content lives.
+        </p>
+        <p>
+          <strong>Emergibles</strong> extends this into collectible,
+          tradeable drops — turning the social loop itself into the
+          primary market.
+        </p>
+        <div class="build-card__meta mono">
+          <span>FARCASTER MINI APP</span>
+          <span>ZORA</span>
+          <span>AI CONTENT</span>
+          <span>SOCIAL DISTRIBUTION</span>
+        </div>
+        <p class="build-card__links mono">
+          <a href="https://farcaster.xyz/miniapps/pmZbrBBIA6wT/emerge" target="_blank" rel="noopener">↗ Emerge miniapp on Farcaster</a>
+          <a href="https://www.emergibles.com" target="_blank" rel="noopener">↗ emergibles.com</a>
+        </p>
+      </article>
+
+      <article class="build-card build-card--primary build-card--capacitr">
+        <div class="build-card__brand build-card__brand--capacitr">
+          <img src="assets/Capacitr C Badge - Inverse 1.png" alt="Capacitr logo" />
+        </div>
+        <div class="build-card__kicker mono">CΔPΔCITR</div>
+        <h2>Agent-native<br/>market research.</h2>
+        <p>
+          Capacitr is an agent that reads the news, reads the social
+          feed, and synthesizes a take. It then surfaces the best way
+          to express that take across prediction markets, perps,
+          options, and onchain spot/AMMs — in one flow.
+        </p>
+        <p>
+          Research → conviction → position. Across every venue, with
+          the agent making the legwork invisible so the user can focus
+          on the call.
+        </p>
+        <div class="build-card__meta mono">
+          <span>AGENT</span>
+          <span>PREDICTION MARKETS</span>
+          <span>PERPS / OPTIONS</span>
+          <span>ONCHAIN</span>
+        </div>
+        <p class="build-card__links mono">
+          <a href="https://capacitr.xyz/" target="_blank" rel="noopener">↗ capacitr.xyz</a>
+          <a href="https://spec.capacitr.xyz/" target="_blank" rel="noopener">↗ spec.capacitr.xyz</a>
+          <a href="https://markets.capacitr.xyz/" target="_blank" rel="noopener">↗ markets.capacitr.xyz (market discovery)</a>
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MADE-BY-HAND / PM-AS-BUILDER -->
+  <section class="made" id="made">
+    <div class="section-label">
+      <span class="mono">§ 06</span>
+      <span class="mono">BUILT WITH MY OWN HANDS</span>
+    </div>
+    <div class="made__grid">
+      <div class="made__copy">
+        <h2 class="made__headline">
+          I'm a product manager.<br/>
+          <em>I ship the thing.</em>
+        </h2>
+        <p>
+          Ten years into product, the gap between "great PM" and "PM who can
+          put their hands on the keyboard" is collapsing. I've always been
+          the kind of PM who drafts the spec and then opens the prototype
+          myself — but in 2025 I committed to going further: actually
+          shipping shippable products end-to-end, not just shepherding them.
+        </p>
+        <p>
+          <strong>This site is one of those.</strong> Every line of HTML,
+          CSS, and JS was written by me in Claude Code from the ground
+          up — no template, no page builder. It's a small proof that the
+          builder-operator skillset isn't a binary, it's a slider, and I'm
+          pushing mine to the right.
+        </p>
+        <p>
+          <strong>Capacitr is the bigger one.</strong> I've built the entire
+          Capacitr stack myself using <strong>Hermes</strong> (Nous Research's
+          agentic coding harness) — from the data ingestion pipeline to the
+          research agent to the execution surface. The repo's private for now,
+          but the public spec page is live.
+        </p>
+      </div>
+      <div class="made__panel">
+        <div class="made__panel-head mono">
+          <span>github.com/smehrjerdian</span>
+          <span>●●●</span>
+        </div>
+        <div class="made__panel-body">
+          <div class="made__repo">
+            <div class="made__repo-name mono">smehrjerdian / portfolio-site</div>
+            <p class="made__repo-desc">My personal portfolio. Hand-rolled HTML/CSS/JS. No framework, no build step, no template.</p>
+            <div class="made__repo-meta mono">
+              <span>● HTML</span>
+              <span>● CSS</span>
+              <span>● JS</span>
+            </div>
+          </div>
+          <div class="made__repo">
+            <div class="made__repo-name mono">smehrjerdian / capacitr <span class="made__repo-lock">🔒 private</span></div>
+            <p class="made__repo-desc">Agent-native market research. Built end-to-end with Hermes by Nous Research.</p>
+            <div class="made__repo-meta mono">
+              <span>● TypeScript</span>
+              <span>● Python</span>
+              <span>● Solidity</span>
+            </div>
+          </div>
+          <div class="made__panel-cta mono">
+            <a href="https://github.com/smehrjerdian/" target="_blank" rel="noopener">↗ github.com/smehrjerdian</a>
+            <a href="https://spec.capacitr.xyz/" target="_blank" rel="noopener">↗ spec.capacitr.xyz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI-NATIVE WORKFLOW -->
+  <section class="stack" id="stack">
+    <div class="section-label">
+      <span class="mono">§ 07</span>
+      <span class="mono">AI-NATIVE PRODUCT WORKFLOW</span>
+    </div>
+    <p class="stack__intro">
+      I've been an early adopter of every serious product-workflow
+      enhancement tool to hit the market. My stack has rewired how I
+      go from idea → spec → prototype → shipped product. Most of it
+      costs less than a junior PM salary per year and collapses
+      weeks into days.
+    </p>
+    <div class="stack__grid">
+      <!-- Row 1 -->
+      <article class="stack__card" data-kind="proto">
+        <div class="stack__card-kicker mono">PROTOTYPING</div>
+        <h3>Vercel v0</h3>
+        <p>Spin up interactive React/Next prototypes from a prompt. I use v0 to get working artifacts in front of stakeholders within the same meeting.</p>
+      </article>
+      <article class="stack__card" data-kind="proto">
+        <div class="stack__card-kicker mono">PROTOTYPING</div>
+        <h3>Google Stitch</h3>
+        <p>Fast UI prototyping from a natural-language brief. Great for wireframes and layout exploration before handing off to design.</p>
+      </article>
+      <article class="stack__card" data-kind="design">
+        <div class="stack__card-kicker mono">DESIGN / CONTENT</div>
+        <h3>Figma + AI plugins</h3>
+        <p>Still the home base for real design work — now with AI plugins (image gen, content variants, component gen) stacked on top.</p>
+      </article>
+      <!-- Row 2 -->
+      <article class="stack__card" data-kind="building">
+        <div class="stack__card-kicker mono">BUILDING · PLANNING · COMMS</div>
+        <h3>Claude Code + Cowork</h3>
+        <p>My daily driver for shipping real code, running product planning, writing specs, drafting exec comms, and orchestrating research across connectors (Slack, Notion, Gmail, Calendar, Figma).</p>
+      </article>
+      <article class="stack__card stack__card--featured" data-kind="agent">
+        <div class="stack__card-kicker mono">AGENT HARNESS · RECENT UPGRADE</div>
+        <h3>Hermes <span class="stack__card-by">by Nous Research</span></h3>
+        <p>
+          Upgraded my coding setup to <strong>Hermes</strong>, an agentic
+          coding harness that runs longer, deeper tasks than a chat loop
+          can hold. I've built all of <strong>Capacitr</strong> end-to-end
+          with it — data pipeline, research agent, execution surface.
+        </p>
+        <p class="stack__card-links mono">
+          <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener">↗ hermes-agent.nousresearch.com</a>
+          <a href="https://spec.capacitr.xyz/" target="_blank" rel="noopener">↗ spec.capacitr.xyz</a>
+          <span class="stack__card-note">(repo private for now)</span>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ABOUT / EDUCATION -->
+  <section class="about" id="about">
+    <div class="section-label">
+      <span class="mono">§ 08</span>
+      <span class="mono">ABOUT / EDUCATION</span>
+    </div>
+    <div class="about__grid">
+      <div class="about__col about__col--portrait">
+        <figure class="about__portrait">
+          <img src="assets/headshot.jpg" alt="Sayeed Mehrjerdian" />
+        </figure>
+        <figure class="about__pfp">
+          <img src="assets/dood-pfp.jpg" alt="Atown onchain pfp" />
+          <figcaption class="mono">ATOWN · ONCHAIN</figcaption>
+        </figure>
+      </div>
+      <div class="about__col about__col--copy">
+        <h2 class="about__headline">
+          Engineer by training.<br/>
+          Operator by reps.<br/>
+          <em>Atown online.</em>
+        </h2>
+        <p>
+          I'm a Georgia Tech <strong>Industrial &amp; Systems Engineer</strong>
+          who fell in love with product, shipped for global brands, and spent
+          the last four years building onchain. The systems brain shows up
+          everywhere: I like to draw the whole flow first, find the loop,
+          and then cut what isn't loading the loop.
+        </p>
+        <p>
+          Before crypto, I co-founded <strong>iAccess Life</strong> — a
+          mobile accessibility review platform for the disability community.
+          We partnered with civic bodies (including MARTA) on accessibility
+          data, spun out an enterprise CX training product, and shipped
+          across iOS, Android, and web. It was my first "run the whole
+          thing" experience: fundraising, hiring, roadmap, go-to-market,
+          support. Everything I do at Lazer, Foundation, or Metaseed has
+          those reps inside it.
+        </p>
+        <div class="about__cards">
+          <div class="about__card about__card--edu">
+            <div class="about__card-kicker mono">EDUCATION</div>
+            <p><strong>Georgia Institute of Technology</strong></p>
+            <p>B.S., Industrial &amp; Systems Engineering</p>
+          </div>
+          <div class="about__card about__card--iaccess">
+            <div class="about__card-kicker mono">STARTUP · FOUNDER</div>
+            <p><strong>iAccess Life</strong></p>
+            <p>Mobile accessibility reviews + enterprise CX training.</p>
+            <ul class="about__card-accolades">
+              <li>DBE-certified enterprise</li>
+              <li>MARTA civic partnership</li>
+              <li>iOS + Android + web, shipped</li>
+              <li>Spun out <em>Voice by iAccess</em> (enterprise CX)</li>
+              <li>6 years operating</li>
+            </ul>
+          </div>
+          <div class="about__card about__card--emerge">
+            <div class="about__card-kicker mono">STARTUP · FOUNDER</div>
+            <p><strong>Emerge Labs</strong></p>
+            <p>Farcaster-native AI content &amp; coining. Emergibles drops.</p>
+            <ul class="about__card-accolades">
+              <li>Live Farcaster miniapp</li>
+              <li>Base Batches 02</li>
+              <li>Base grant recipient · 5 ETH</li>
+              <li>Google for Startups · $200K in compute</li>
+              <li>Arbitrum grant recipient · $25K</li>
+              <li>Featured by Neynar, Farcaster, ETH FND, Base &amp; Arbitrum</li>
+              <li>Going viral on Farcaster (playbook + drops)</li>
+            </ul>
+            <img src="assets/emerge-avatar.png" alt="Emerge" class="about__card-mark" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLKIT -->
+  <section class="toolkit" id="toolkit">
+    <div class="section-label">
+      <span class="mono">§ 09</span>
+      <span class="mono">TOOLKIT</span>
+    </div>
+    <ul class="toolkit__tags">
+      <li>Product strategy</li>
+      <li>0→1</li>
+      <li>Roadmaps</li>
+      <li>PRDs</li>
+      <li>Agentic UX</li>
+      <li>AI agents / trading agents</li>
+      <li>Consumer crypto</li>
+      <li>DeFi trading / perps / options</li>
+      <li>Prediction markets</li>
+      <li>Staking</li>
+      <li>Fungible token trading</li>
+      <li>Collectible mints</li>
+      <li>Stablecoin cards &amp; orchestration</li>
+      <li>AI content creation automation</li>
+      <li>Consumer marketing experiences</li>
+      <li>Smart contracts</li>
+      <li>Builder / Wallet SDKs</li>
+      <li>MCP / Agent infra</li>
+      <li>Developer tooling</li>
+      <li>Farcaster</li>
+      <li>Base / Solana / EVM</li>
+      <li>Wallet UX</li>
+      <li>Onboarding &amp; on/off ramps</li>
+      <li>User research</li>
+      <li>Metrics frameworks</li>
+      <li>Sprint planning</li>
+      <li>Stakeholder management</li>
+      <li>Cross-functional leadership</li>
+    </ul>
+  </section>
+
+  <!-- GOODS -->
+  <section class="goods" id="goods">
+    <div class="section-label">
+      <span class="mono">§ 10</span>
+      <span class="mono">GOODS · PHYSICAL DROPS</span>
+    </div>
+    <p class="goods__intro">
+      Crypto is an internet-native culture, but the best moments
+      still spill into meatspace. Over the years I've produced and
+      distributed a handful of physical items for communities I
+      love. These aren't merch — they're objects designed to live
+      in the culture.
+    </p>
+    <div class="goods__grid">
+
+      <article class="goods__card goods__card--feature" data-kind="hat">
+        <div class="goods__card-media">
+          <img src="assets/hat-37.png" alt="37 Farcaster hat" />
+        </div>
+        <div class="goods__card-body">
+          <div class="goods__card-kicker mono">FARCASTER · 2025</div>
+          <h3>The "37" Farcaster Hat</h3>
+          <p>
+            A tribute hat for the Farcaster community — a nod to an
+            inside joke that turned into a timeline moment. It went
+            viral after prominent figures across FC started sharing
+            theirs, and became one of the most-seen physical objects
+            in the ecosystem that year.
+          </p>
+          <div class="goods__card-meta mono">
+            <span>LIMITED</span>
+            <span>COMMUNITY GIFT</span>
+            <span>VIRAL MOMENT</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="goods__card" data-kind="higher">
+        <div class="goods__card-media">
+          <img src="assets/higher zine.avif" alt="Higher zine cover" loading="lazy" />
+        </div>
+        <div class="goods__card-body">
+          <div class="goods__card-kicker mono">HIGHER · PRINT</div>
+          <h3>Higher Zine</h3>
+          <p>
+            A print zine produced for the <strong>$HIGHER</strong>
+            memecoin community — a physical artifact that captured
+            the early chapter of a community born entirely onchain.
+          </p>
+          <div class="goods__card-meta mono">
+            <span>PRINT</span>
+            <span>MEMECOIN NATIVE</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="goods__card" data-kind="higher">
+        <div class="goods__card-media">
+          <img src="assets/higher jerzy.jpg" alt="Higher basketball jersey" loading="lazy" />
+        </div>
+        <div class="goods__card-body">
+          <div class="goods__card-kicker mono">HIGHER · APPAREL</div>
+          <h3>Higher Basketball Jersey</h3>
+          <p>
+            A basketball jersey for the Higher community — built like
+            the real thing, not a drop-shipped tee. Worn in real life,
+            seen on the timeline.
+          </p>
+          <div class="goods__card-meta mono">
+            <span>APPAREL</span>
+            <span>TEAM ISSUE</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="goods__card" data-kind="emerge">
+        <div class="goods__card-media">
+          <img src="assets/emerge_crewneck.jpeg" alt="Emerge crewneck" loading="lazy" />
+        </div>
+        <div class="goods__card-body">
+          <div class="goods__card-kicker mono">EMERGE · APPAREL</div>
+          <h3>Emerge Crewneck</h3>
+          <p>
+            A crewneck inspired by the <strong>Dutch Total 90 Euros
+            jersey</strong> — translated into Emerge's identity.
+            Football-kit references run deep in internet culture, and
+            this one makes the lineage literal.
+          </p>
+          <div class="goods__card-meta mono">
+            <span>APPAREL</span>
+            <span>KIT-INSPIRED</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="goods__foot mono">
+      Physical goods — distributed to the community, not for sale.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-label">
+      <span class="mono">§ 11</span>
+      <span class="mono">CONTACT</span>
+    </div>
+    <div class="contact__inner">
+      <h2 class="contact__headline">
+        Building something that needs<br/>
+        an operator who's <em>already been early</em>?
+      </h2>
+      <p class="contact__lede">
+        I'm open to senior PM roles, founding product, and advisory
+        on consumer crypto, agentic products, and onchain infra.
+      </p>
+      <div class="contact__links">
+        <a class="contact__link" href="mailto:smehrjerdian@gmail.com">
+          <span class="mono">EMAIL →</span>
+          <span>smehrjerdian@gmail.com</span>
+        </a>
+        <a class="contact__link" href="tel:+19102868634">
+          <span class="mono">PHONE →</span>
+          <span>910-286-8634</span>
+        </a>
+        <a class="contact__link" href="https://x.com/AtownBrown" target="_blank" rel="noopener">
+          <span class="mono">X →</span>
+          <span>@AtownBrown</span>
+        </a>
+        <a class="contact__link" href="https://farcaster.xyz/atown" target="_blank" rel="noopener">
+          <span class="mono">FARCASTER →</span>
+          <span>@atown</span>
+        </a>
+        <a class="contact__link" href="https://www.linkedin.com/in/smehrjerdian" target="_blank" rel="noopener">
+          <span class="mono">LINKEDIN →</span>
+          <span>in/smehrjerdian</span>
+        </a>
+        <a class="contact__link" href="https://github.com/smehrjerdian/" target="_blank" rel="noopener">
+          <span class="mono">GITHUB →</span>
+          <span>@smehrjerdian</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <span class="mono">© 2026 SAYEED MEHRJERDIAN / ATOWN</span>
+      <div class="foot__social">
+        <a href="https://x.com/AtownBrown" target="_blank" rel="noopener" class="mono">X / @AtownBrown</a>
+        <span class="foot__sep" aria-hidden="true">·</span>
+        <a href="https://farcaster.xyz/atown" target="_blank" rel="noopener" class="mono">FC / @atown</a>
+        <span class="foot__sep" aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/smehrjerdian" target="_blank" rel="noopener" class="mono">LI / smehrjerdian</a>
+        <span class="foot__sep" aria-hidden="true">·</span>
+        <a href="https://github.com/smehrjerdian/" target="_blank" rel="noopener" class="mono">GH / smehrjerdian</a>
+      </div>
+      <span class="mono">BUILT IN ATL</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="bolt-cutout">
+      <!-- White = visible, black = cutout -->
+      <rect x="0" y="0" width="512" height="512" fill="white"/>
+      <!-- Lightning bolt cutout (transparent) -->
+      <polygon id="bolt-shape"
+               points="250,110 180,270 260,270 210,400 330,230 250,230"
+               fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- Battery outline with bolt cutout applied -->
+  <g mask="url(#bolt-cutout)">
+    <!-- Main battery body -->
+    <rect x="96" y="156" width="280" height="200" rx="32" ry="32"
+          fill="none"
+          stroke="black"
+          stroke-width="32"
+          stroke-linejoin="round"/>
+
+    <!-- Battery terminal -->
+    <rect x="376" y="220" width="40" height="72" rx="12" ry="12"
+          fill="none"
+          stroke="black"
+          stroke-width="32"
+          stroke-linejoin="round"/>
+  </g>
+
+  <!-- Bolt OUTLINE (drawn on top) -->
+  <polygon points="250,110 180,270 260,270 210,400 330,230 250,230"
+           fill="none"
+           stroke="black"
+           stroke-width="20"
+           stroke-linejoin="round"
+           stroke-linecap="round"/>
+</svg>
