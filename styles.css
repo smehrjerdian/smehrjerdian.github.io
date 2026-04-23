@@ -1651,3 +1651,141 @@ section {
   .status-dot { animation: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ============================================
+   § 08 · CHRONICALLY ONLINE
+   ============================================ */
+.chronic {
+  padding: 96px clamp(24px, 6vw, 80px);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.chronic__intro {
+  max-width: 760px;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.6;
+  color: var(--cream);
+  margin: 28px 0 56px;
+}
+
+.chronic__timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 64px;
+}
+
+.chronic__moment {
+  position: relative;
+  padding: 22px 22px 22px 22px;
+  border: 1px solid rgba(237, 230, 211, 0.12);
+  background: rgba(237, 230, 211, 0.025);
+  border-radius: 4px;
+  transition: background .25s ease, border-color .25s ease, transform .25s ease;
+  overflow: hidden;
+}
+
+.chronic__moment::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--hunter-bright);
+  opacity: 0.55;
+  transition: opacity .25s ease, width .25s ease;
+}
+
+.chronic__moment:hover {
+  background: rgba(237, 230, 211, 0.05);
+  border-color: rgba(237, 230, 211, 0.22);
+  transform: translateY(-2px);
+}
+
+.chronic__moment:hover::before {
+  opacity: 1;
+  width: 5px;
+}
+
+.chronic__year {
+  display: inline-block;
+  color: var(--hunter-bright);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding: 3px 8px;
+  border: 1px solid rgba(92, 154, 116, 0.35);
+  border-radius: 3px;
+  background: rgba(92, 154, 116, 0.08);
+}
+
+.chronic__moment h3 {
+  font-size: 18px;
+  line-height: 1.25;
+  margin: 0 0 10px;
+  color: var(--cream-bright);
+  font-weight: 600;
+}
+
+.chronic__moment p {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--cream);
+  margin: 0;
+}
+
+.chronic__moment p strong {
+  color: var(--cream-bright);
+}
+
+.chronic__people {
+  border-top: 1px solid rgba(237, 230, 211, 0.12);
+  padding-top: 40px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.chronic__people-label {
+  color: var(--cream-bright);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  margin-bottom: 22px;
+}
+
+.chronic__people-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chronic__people-list li {
+  border: 1px solid rgba(237, 230, 211, 0.2);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--cream);
+  background: rgba(237, 230, 211, 0.03);
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.chronic__people-list li:hover {
+  background: rgba(92, 154, 116, 0.12);
+  border-color: var(--hunter-bright);
+  color: var(--cream-bright);
+}
+
+@media (max-width: 640px) {
+  .chronic {
+    padding: 64px 20px;
+  }
+  .chronic__timeline {
+    grid-template-columns: 1fr;
+  }
+}
