@@ -1961,6 +1961,12 @@ p, li, h1, h2, h3, h4 { overflow-wrap: break-word; }
   .hero__line--outline { padding-left: 24px; }
   .hero__bio p { font-size: 16px; }
 
+  /* On mobile the deck stacks under the title, so it can visually bump into
+     the tagline below. Push the sub-block down so the deck cards (which are
+     rotated + have a caption at bottom: -28px) can breathe. */
+  .hero__top { gap: 48px; }
+  .hero__sub { margin-top: 56px; }
+
   /* Footer wraps properly */
   .foot__inner {
     flex-direction: column;
