@@ -1037,11 +1037,7 @@ section {
   overflow: hidden;
   border: 1px solid var(--hairline);
   background: var(--bg-2);
-  aspect-ratio: 1;
   transition: transform .35s var(--ease), border-color .35s var(--ease);
-}
-.emerge-dive__gallery-grid--2 .emerge-dive__gallery-img {
-  aspect-ratio: 4 / 3;
 }
 .emerge-dive__gallery-img:hover {
   transform: translateY(-2px);
@@ -1049,9 +1045,19 @@ section {
 }
 .emerge-dive__gallery-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
+}
+
+/* --- Full-width diagram rows (outside columns) --- */
+.emerge-dive__diagrams {
+  margin-top: clamp(28px, 4vw, 48px);
+}
+.emerge-dive__diagrams .emerge-dive__gallery-grid {
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 640px) {
+  .emerge-dive__diagrams .emerge-dive__gallery-grid { grid-template-columns: 1fr; }
 }
 
 /* --- Hero image (full-width interface shot) --- */
