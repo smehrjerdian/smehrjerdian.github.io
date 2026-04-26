@@ -1090,6 +1090,89 @@ section {
   color: #FF6B35;
 }
 
+/* --- Lightbox trigger cursor hint --- */
+.emerge-dive__lightbox-trigger {
+  cursor: zoom-in;
+  position: relative;
+}
+.emerge-dive__lightbox-trigger::after {
+  content: "⤢";
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 25, 19, 0.75);
+  border: 1px solid var(--hairline-2);
+  border-radius: 6px;
+  color: var(--cream);
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity .25s var(--ease);
+  pointer-events: none;
+}
+.emerge-dive__lightbox-trigger:hover::after { opacity: 1; }
+
+/* ==========================================================================
+   LIGHTBOX — fullscreen image overlay
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s var(--ease), visibility .3s;
+  padding: 40px;
+}
+.lightbox--open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 8px 60px rgba(0, 0, 0, 0.6);
+  transform: scale(0.92);
+  transition: transform .35s var(--ease);
+}
+.lightbox--open .lightbox__img {
+  transform: scale(1);
+}
+.lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--cream-bright);
+  font-size: 28px;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s;
+}
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(1.1);
+}
+
 /* ==========================================================================
    SECTION — Foundation / Rodeo Deep Dive (§ 04.5)
    ========================================================================== */
