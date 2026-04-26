@@ -72,8 +72,9 @@
       });
     });
 
-    // ----- Hero duo: click between cards to swap which is on top.
-    //       Only the top card's social link is clickable. -----
+    // ----- Hero duo: click to swap which card is on top.
+    //       Only the top card's platform-name link is clickable.
+    //       Clicking anywhere on the card image area just swaps. -----
     document.querySelectorAll(".deck").forEach((deck) => {
       const cards = deck.querySelectorAll(".deck__card");
       // IRL card starts on top
@@ -82,20 +83,36 @@
           card.classList.add("deck__card--top");
         }
       });
-      cards.forEach((card) => {
-        card.addEventListener("click", (e) => {
-          // If clicking the link on the top card, let it navigate
-          if (e.target.closest(".deck__card-link") && card.classList.contains("deck__card--top")) {
-            return;
-          }
-          // Otherwise, swap: bring this card to top
+
+      // Intercept ALL link clicks — only allow on the top card's link
+      deck.addEventListener("click", (e) => {
+        const link = e.target.closest(".deck__card-link");
+        const card = e.target.closest(".deck__card");
+        if (!card) return;
+
+        // If clicking the link text on the TOP card, let it navigate
+        if (link && card.classList.contains("deck__card--top")) {
+          return; // allow default navigation
+        }
+
+        // Block link navigation in all other cases
+        if (link) {
           e.preventDefault();
-          cards.forEach((c) => c.classList.remove("deck__card--top"));
-          card.classList.add("deck__card--top");
-          // Visually promote: top card gets higher z-index
-          cards.forEach((c) => {
-            c.style.zIndex = c.classList.contains("deck__card--top") ? "5" : "1";
-          });
+          e.stopPropagation();
+        }
+
+        // If this card is already on top, do nothing (no accidental swap)
+        if (card.classList.contains("deck__card--top")) {
+          e.preventDefault();
+          return;
+        }
+
+        // Swap: bring the clicked (non-top) card to top
+        e.preventDefault();
+        cards.forEach((c) => c.classList.remove("deck__card--top"));
+        card.classList.add("deck__card--top");
+        cards.forEach((c) => {
+          c.style.zIndex = c.classList.contains("deck__card--top") ? "5" : "1";
         });
       });
     });
