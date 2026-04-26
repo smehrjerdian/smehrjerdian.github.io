@@ -14,7 +14,7 @@
   onReady(() => {
     // ----- Scroll reveal -----
     const revealTargets = document.querySelectorAll(
-      "section > .section-label, .now__card, .work__item, .wall__card, .client, .build-card, .toolkit__tags, .contact__headline, .contact__lede, .contact__links, .made__copy, .made__panel, .stack__card, .stack__intro, .goods__card, .goods__intro, .rodeo-dive__col, .rodeo-dive__intro"
+      "section > .section-label, .now__card, .work__item, .wall__card, .client, .build-card, .toolkit__tags, .contact__headline, .contact__lede, .contact__links, .made__copy, .made__panel, .stack__card, .stack__intro, .goods__card, .goods__intro, .goods__hero, .rodeo-dive__col, .rodeo-dive__intro"
     );
     revealTargets.forEach((el) => el.classList.add("reveal"));
 
@@ -98,6 +98,55 @@
           });
         });
       });
+    });
+
+    // ----- Goods carousels (prev/next/dots/swipe) -----
+    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+      const slides = carousel.querySelectorAll(".goods__carousel-slide");
+      const dotsContainer = carousel.querySelector(".goods__carousel-dots");
+      const prevBtn = carousel.querySelector(".goods__carousel-btn--prev");
+      const nextBtn = carousel.querySelector(".goods__carousel-btn--next");
+      let current = 0;
+      let autoTimer = null;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "goods__carousel-dot" + (i === 0 ? " goods__carousel-dot--active" : "");
+        dot.setAttribute("aria-label", `Image ${i + 1}`);
+        dot.addEventListener("click", () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll(".goods__carousel-dot");
+
+      function goTo(i) {
+        slides[current].classList.remove("goods__carousel-slide--active");
+        dots[current].classList.remove("goods__carousel-dot--active");
+        current = ((i % slides.length) + slides.length) % slides.length;
+        slides[current].classList.add("goods__carousel-slide--active");
+        dots[current].classList.add("goods__carousel-dot--active");
+        resetAuto();
+      }
+
+      prevBtn.addEventListener("click", (e) => { e.stopPropagation(); goTo(current - 1); });
+      nextBtn.addEventListener("click", (e) => { e.stopPropagation(); goTo(current + 1); });
+
+      // Swipe support
+      let startX = 0;
+      carousel.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      carousel.addEventListener("touchend", (e) => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+      });
+
+      // Auto-advance every 4s, pause on hover
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), 4000);
+      }
+      carousel.addEventListener("mouseenter", () => clearInterval(autoTimer));
+      carousel.addEventListener("mouseleave", resetAuto);
+      resetAuto();
     });
 
     // ----- Console easter egg -----

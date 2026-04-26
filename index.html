@@ -1394,11 +1394,28 @@
       love. These aren't merch — they're objects designed to live
       in the culture.
     </p>
+    <!-- Hero banner — DAN photo -->
+    <div class="goods__hero">
+      <img src="assets/DAN.avif" alt="Goods — physical drops for the culture" loading="lazy" />
+    </div>
+
     <div class="goods__grid">
 
-      <article class="goods__card goods__card--feature" data-kind="hat">
-        <div class="goods__card-media">
-          <img src="assets/hat-37.png" alt="37 Farcaster hat" />
+      <!-- 37 HAT -->
+      <article class="goods__card goods__card--interactive" data-kind="hat">
+        <div class="goods__card-media goods__carousel" data-carousel>
+          <div class="goods__carousel-track">
+            <img src="assets/hat-37.png" alt="37 Farcaster hat" loading="lazy" class="goods__carousel-slide goods__carousel-slide--active" />
+            <img src="assets/hat-grid/dwr.png" alt="Dan Romero wearing the 37 hat" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/hat-grid/jake.png" alt="Jake wearing the 37 hat" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/hat-grid/garrett.png" alt="Garrett wearing the 37 hat" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/hat-grid/dish.png" alt="Dish from Clanker with the 37 hat" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/hat-grid/fbd.webp" alt="Farcaster Builder Day" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/farcaster-builder-day.webp" alt="Farcaster Builder Day crowd" loading="lazy" class="goods__carousel-slide" />
+          </div>
+          <div class="goods__carousel-dots" aria-label="Image navigation"></div>
+          <button class="goods__carousel-btn goods__carousel-btn--prev" aria-label="Previous image">‹</button>
+          <button class="goods__carousel-btn goods__carousel-btn--next" aria-label="Next image">›</button>
         </div>
         <div class="goods__card-body">
           <div class="goods__card-kicker mono">FARCASTER · 2025</div>
@@ -1415,75 +1432,54 @@
             <span>COMMUNITY GIFT</span>
             <span>VIRAL MOMENT</span>
           </div>
-          <div class="hat-grid" aria-label="37 hat in the wild">
-            <div class="hat-grid__caption mono">SEEN ON / WORN BY</div>
-            <div class="hat-grid__tiles">
-              <figure class="hat-grid__tile">
-                <img src="assets/hat-grid/dwr.png" alt="Dan Romero wearing the 37 hat" loading="lazy" />
-                <figcaption class="mono">DWR</figcaption>
-              </figure>
-              <figure class="hat-grid__tile">
-                <img src="assets/hat-grid/jake.png" alt="Jake wearing the 37 hat" loading="lazy" />
-                <figcaption class="mono">JAKE</figcaption>
-              </figure>
-              <figure class="hat-grid__tile">
-                <img src="assets/hat-grid/garrett.png" alt="Garrett wearing the 37 hat" loading="lazy" />
-                <figcaption class="mono">GARRETT</figcaption>
-              </figure>
-              <figure class="hat-grid__tile">
-                <img src="assets/hat-grid/dish.png" alt="Dish from Clanker with the 37 hat" loading="lazy" />
-                <figcaption class="mono">DISH · CLANKER</figcaption>
-              </figure>
-              <figure class="hat-grid__tile">
-                <img src="assets/hat-grid/fbd.webp" alt="Farcaster Builder Day" loading="lazy" />
-                <figcaption class="mono">FC BUILDER DAY</figcaption>
-              </figure>
-            </div>
-          </div>
         </div>
       </article>
 
-      <article class="goods__card" data-kind="higher">
-        <div class="goods__card-media">
-          <img src="assets/higher zine.avif" alt="Higher zine cover" loading="lazy" />
+      <!-- HIGHER — ZINE + JERSEY -->
+      <article class="goods__card goods__card--interactive" data-kind="higher">
+        <div class="goods__card-media goods__carousel" data-carousel>
+          <div class="goods__carousel-track">
+            <img src="assets/higher zine.avif" alt="Higher zine cover" loading="lazy" class="goods__carousel-slide goods__carousel-slide--active" />
+            <img src="assets/higher_zine_2.jpg" alt="Higher zine interior" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/higher zine 2.avif" alt="Higher zine spread" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/higher jerzy.jpg" alt="Higher basketball jersey front" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/higher_jersey.jpg" alt="Higher basketball jersey detail" loading="lazy" class="goods__carousel-slide" />
+          </div>
+          <div class="goods__carousel-dots" aria-label="Image navigation"></div>
+          <button class="goods__carousel-btn goods__carousel-btn--prev" aria-label="Previous image">‹</button>
+          <button class="goods__carousel-btn goods__carousel-btn--next" aria-label="Next image">›</button>
         </div>
         <div class="goods__card-body">
-          <div class="goods__card-kicker mono">HIGHER · PRINT</div>
-          <h3>Higher Zine</h3>
+          <div class="goods__card-kicker mono">HIGHER · PRINT + APPAREL</div>
+          <h3>Higher Zine &amp; Jersey</h3>
           <p>
-            A print zine produced for the <strong>$HIGHER</strong>
-            memecoin community — a physical artifact that captured
-            the early chapter of a community born entirely onchain.
+            A print zine and basketball jersey for the <strong>$HIGHER</strong>
+            memecoin community — physical artifacts that captured the
+            early chapter of a community born entirely onchain. The jersey
+            is built like the real thing, not a drop-shipped tee.
           </p>
           <div class="goods__card-meta mono">
             <span>PRINT</span>
+            <span>APPAREL</span>
             <span>MEMECOIN NATIVE</span>
           </div>
         </div>
       </article>
 
-      <article class="goods__card" data-kind="higher">
-        <div class="goods__card-media">
-          <img src="assets/higher jerzy.jpg" alt="Higher basketball jersey" loading="lazy" />
-        </div>
-        <div class="goods__card-body">
-          <div class="goods__card-kicker mono">HIGHER · APPAREL</div>
-          <h3>Higher Basketball Jersey</h3>
-          <p>
-            A basketball jersey for the Higher community — built like
-            the real thing, not a drop-shipped tee. Worn in real life,
-            seen on the timeline.
-          </p>
-          <div class="goods__card-meta mono">
-            <span>APPAREL</span>
-            <span>TEAM ISSUE</span>
+      <!-- EMERGE CREWNECK -->
+      <article class="goods__card goods__card--interactive" data-kind="emerge">
+        <div class="goods__card-media goods__carousel" data-carousel>
+          <div class="goods__carousel-track">
+            <img src="assets/emerge_crewneck.jpeg" alt="Emerge crewneck front" loading="lazy" class="goods__carousel-slide goods__carousel-slide--active" />
+            <img src="assets/emerge_crewneck_2.jpg" alt="Emerge crewneck detail" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/emerge_crewneck_3.jpg" alt="Emerge crewneck back" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/emerge_argentina_crewneck.jpg" alt="Emerge Argentina crewneck" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/emerge crewneck badge.jpeg" alt="Emerge crewneck badge closeup" loading="lazy" class="goods__carousel-slide" />
+            <img src="assets/emerge_badge_sticker.jpg" alt="Emerge badge sticker" loading="lazy" class="goods__carousel-slide" />
           </div>
-        </div>
-      </article>
-
-      <article class="goods__card" data-kind="emerge">
-        <div class="goods__card-media">
-          <img src="assets/emerge_crewneck.jpeg" alt="Emerge crewneck" loading="lazy" />
+          <div class="goods__carousel-dots" aria-label="Image navigation"></div>
+          <button class="goods__carousel-btn goods__carousel-btn--prev" aria-label="Previous image">‹</button>
+          <button class="goods__carousel-btn goods__carousel-btn--next" aria-label="Next image">›</button>
         </div>
         <div class="goods__card-body">
           <div class="goods__card-kicker mono">EMERGE · APPAREL</div>

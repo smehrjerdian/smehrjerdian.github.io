@@ -1719,6 +1719,24 @@ section {
   color: var(--cream);
   margin: 0 0 clamp(28px, 4vw, 48px);
 }
+/* Goods hero banner */
+.goods__hero {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  margin-bottom: clamp(28px, 4vw, 48px);
+  max-height: 400px;
+}
+.goods__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 600px) {
+  .goods__hero { max-height: 240px; border-radius: 12px; }
+}
+
 .goods__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1743,24 +1761,7 @@ section {
   transform: translateY(-3px);
   border-color: var(--hunter-bright);
 }
-.goods__card--feature {
-  grid-column: span 3;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-@media (max-width: 900px) {
-  .goods__card--feature {
-    grid-column: span 2;
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 600px) {
-  .goods__card--feature {
-    grid-column: span 1;
-    grid-template-columns: 1fr;
-  }
-}
+/* (goods__card--feature removed — all cards are now equal-width with carousels) */
 .goods__card-media {
   aspect-ratio: 3 / 4;
   background: #0A1410;
@@ -1770,26 +1771,9 @@ section {
   overflow: hidden;
   border-bottom: 1px solid var(--hairline);
 }
-.goods__card--feature .goods__card-media {
-  aspect-ratio: auto;
-  border-right: 1px solid var(--hairline);
-  border-bottom: none;
-  min-height: 420px;
-}
-@media (max-width: 900px) {
-  .goods__card--feature .goods__card-media {
-    border-right: none;
-    border-bottom: 1px solid var(--hairline);
-    aspect-ratio: 3 / 4;
-    min-height: 0;
-  }
-}
-@media (max-width: 600px) {
-  .goods__card--feature .goods__card-media {
-    aspect-ratio: 1 / 1;
-    min-height: 0;
-  }
-  .goods__card--feature h3 { font-size: 22px; }
+/* goods__card--interactive: slightly taller media area for carousel */
+.goods__card--interactive .goods__card-media {
+  aspect-ratio: 1;
 }
 .goods__card-media img {
   width: 100%;
@@ -1829,7 +1813,6 @@ section {
   margin: 0;
   letter-spacing: -0.01em;
 }
-.goods__card--feature h3 { font-size: 28px; }
 .goods__card-body p {
   font-size: 14px;
   line-height: 1.55;
@@ -1915,6 +1898,91 @@ section {
   color: var(--sage-dim);
   font-size: 12px;
   letter-spacing: 0.08em;
+}
+
+/* ---------- Goods carousel ---------- */
+.goods__carousel {
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+}
+.goods__carousel:active { cursor: grabbing; }
+.goods__carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.goods__carousel-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .45s var(--ease);
+  pointer-events: none;
+}
+.goods__carousel-slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Prev/next buttons */
+.goods__carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .25s var(--ease), background .2s var(--ease);
+  z-index: 4;
+}
+.goods__carousel:hover .goods__carousel-btn { opacity: 1; }
+.goods__carousel-btn:hover {
+  background: rgba(0,0,0,0.7);
+  border-color: rgba(255,255,255,0.5);
+}
+.goods__carousel-btn--prev { left: 10px; }
+.goods__carousel-btn--next { right: 10px; }
+/* Dot indicators */
+.goods__carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 4;
+}
+.goods__carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: transparent;
+  cursor: pointer;
+  transition: background .2s var(--ease), transform .2s var(--ease);
+  padding: 0;
+}
+.goods__carousel-dot--active {
+  background: #ffffff;
+  transform: scale(1.25);
+}
+.goods__carousel-dot:hover { background: rgba(255,255,255,0.6); }
+@media (max-width: 600px) {
+  .goods__carousel-btn { width: 30px; height: 30px; font-size: 16px; }
+  .goods__carousel-dot { width: 6px; height: 6px; }
 }
 
 /* ---------- Scroll-reveal state ---------- */
