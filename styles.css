@@ -314,7 +314,6 @@ section {
   display: block;
   text-decoration: none;
   color: var(--cream);
-  cursor: pointer;
 }
 .deck__card img {
   width: 100%;
@@ -387,9 +386,35 @@ section {
   filter: saturate(0.85);
 }
 
+/* Links inside deck cards — only clickable when card is on top (z-index managed by JS) */
+.deck__card-link {
+  color: #ffffff;
+  text-decoration: none;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  transition: opacity .2s var(--ease);
+}
+.deck__card-link:hover {
+  opacity: 0.8;
+}
+.deck__card-link .mono {
+  color: #ffffff;
+  border-bottom: 1px dashed rgba(255,255,255,0.45);
+  padding-bottom: 1px;
+}
+/* Cards that are NOT on top should not have clickable links */
+.deck__card:not(.deck__card--top) .deck__card-link {
+  pointer-events: none;
+}
+/* The card itself should not be a click target */
+.deck__card {
+  cursor: default;
+}
+
 /* Caption sits below the pair. */
 .deck::after {
-  content: "IRL  ↔  ONCHAIN · HOVER OR CLICK";
+  content: "IRL  ↔  ONCHAIN · CLICK TO SWAP";
   position: absolute;
   left: 50%;
   bottom: -28px;
@@ -409,7 +434,7 @@ section {
 .hero__title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(36px, 6.4vw, 104px);
+  font-size: clamp(36px, 5.2vw, 80px);
   line-height: 0.92;
   letter-spacing: -0.04em;
   margin: 0 0 40px;
@@ -767,6 +792,164 @@ section {
   margin-bottom: 6px;
 }
 .stat__label { color: var(--sage) !important; }
+
+/* ==========================================================================
+   SECTION — Foundation / Rodeo Deep Dive (§ 03.5)
+   ========================================================================== */
+.rodeo-dive {
+  padding: clamp(60px, 8vw, 120px) var(--pad);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+.rodeo-dive__intro {
+  max-width: 760px;
+  font-size: 17px;
+  color: var(--cream);
+  margin: 0 0 clamp(32px, 4vw, 52px);
+}
+.rodeo-dive__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .rodeo-dive__cols { grid-template-columns: 1fr; gap: 48px; }
+}
+.rodeo-dive__col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.rodeo-dive__col-header {
+  padding: 24px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.rodeo-dive__col-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.rodeo-dive__col-header--babes::before {
+  background: linear-gradient(90deg, #FF6B9D, #C084FC, #60A5FA);
+}
+.rodeo-dive__col-header--rodeo::before {
+  background: linear-gradient(90deg, var(--hunter-bright), var(--olive), var(--tan));
+}
+.rodeo-dive__col-kicker {
+  color: var(--sage) !important;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+.rodeo-dive__col-header h3 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 600;
+  color: var(--cream-bright);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+.rodeo-dive__col-artist {
+  font-weight: 400;
+  font-size: 0.65em;
+  color: var(--tan);
+  font-style: italic;
+}
+.rodeo-dive__col-sub {
+  font-size: 15px;
+  color: var(--cream);
+  margin: 0;
+  line-height: 1.5;
+}
+.rodeo-dive__hero-img {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--bg-2);
+}
+.rodeo-dive__hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .6s var(--ease);
+}
+.rodeo-dive__hero-img:hover img {
+  transform: scale(1.02);
+}
+.rodeo-dive__stats {
+  margin: 0;
+}
+.rodeo-dive__body {
+  padding: 0;
+}
+.rodeo-dive__body-head {
+  color: var(--hunter-bright) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.14em !important;
+  margin: 0 0 12px !important;
+}
+.rodeo-dive__features {
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+}
+.rodeo-dive__features li {
+  font-size: 14px !important;
+  line-height: 1.55;
+}
+.rodeo-dive__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rodeo-dive__gallery-label {
+  color: var(--tan) !important;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.rodeo-dive__gallery-grid {
+  display: grid;
+  gap: 10px;
+}
+.rodeo-dive__gallery-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.rodeo-dive__gallery-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.rodeo-dive__gallery-grid--1 {
+  grid-template-columns: 1fr;
+}
+.rodeo-dive__gallery-img {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--bg-2);
+  aspect-ratio: 1;
+  transition: transform .35s var(--ease), border-color .35s var(--ease);
+}
+.rodeo-dive__gallery-grid--1 .rodeo-dive__gallery-img {
+  aspect-ratio: 16 / 9;
+}
+.rodeo-dive__gallery-img:hover {
+  transform: translateY(-2px);
+  border-color: var(--hunter-bright);
+}
+.rodeo-dive__gallery-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 480px) {
+  .rodeo-dive__gallery-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .rodeo-dive__gallery-grid--2 { grid-template-columns: 1fr 1fr; }
+}
 
 /* ---------- WALL (Metaseed grid) ---------- */
 .wall__intro {

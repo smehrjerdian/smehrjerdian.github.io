@@ -14,7 +14,7 @@
   onReady(() => {
     // ----- Scroll reveal -----
     const revealTargets = document.querySelectorAll(
-      "section > .section-label, .now__card, .work__item, .wall__card, .client, .build-card, .toolkit__tags, .contact__headline, .contact__lede, .contact__links, .made__copy, .made__panel, .stack__card, .stack__intro, .goods__card, .goods__intro"
+      "section > .section-label, .now__card, .work__item, .wall__card, .client, .build-card, .toolkit__tags, .contact__headline, .contact__lede, .contact__links, .made__copy, .made__panel, .stack__card, .stack__intro, .goods__card, .goods__intro, .rodeo-dive__col, .rodeo-dive__intro"
     );
     revealTargets.forEach((el) => el.classList.add("reveal"));
 
@@ -72,8 +72,33 @@
       });
     });
 
-    // ----- Hero duo: both cards are independent anchors.
-    //       CSS handles the hover choreography; no JS needed. -----
+    // ----- Hero duo: click between cards to swap which is on top.
+    //       Only the top card's social link is clickable. -----
+    document.querySelectorAll(".deck").forEach((deck) => {
+      const cards = deck.querySelectorAll(".deck__card");
+      // IRL card starts on top
+      cards.forEach((card) => {
+        if (card.classList.contains("deck__card--irl")) {
+          card.classList.add("deck__card--top");
+        }
+      });
+      cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+          // If clicking the link on the top card, let it navigate
+          if (e.target.closest(".deck__card-link") && card.classList.contains("deck__card--top")) {
+            return;
+          }
+          // Otherwise, swap: bring this card to top
+          e.preventDefault();
+          cards.forEach((c) => c.classList.remove("deck__card--top"));
+          card.classList.add("deck__card--top");
+          // Visually promote: top card gets higher z-index
+          cards.forEach((c) => {
+            c.style.zIndex = c.classList.contains("deck__card--top") ? "5" : "1";
+          });
+        });
+      });
+    });
 
     // ----- Console easter egg -----
     const styles = [
