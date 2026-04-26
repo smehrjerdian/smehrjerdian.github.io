@@ -434,7 +434,7 @@ section {
 .hero__title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(36px, 4.2vw, 60px);
+  font-size: clamp(32px, 4vw, 54px);
   line-height: 0.92;
   letter-spacing: -0.04em;
   margin: 0 0 40px;
@@ -794,7 +794,304 @@ section {
 .stat__label { color: var(--sage) !important; }
 
 /* ==========================================================================
-   SECTION — Foundation / Rodeo Deep Dive (§ 03.5)
+   SECTION — Emerge Labs · Founder Deep Dive (§ 03)
+   ========================================================================== */
+.emerge-dive {
+  padding: clamp(60px, 8vw, 120px) var(--pad);
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* --- Header: Logo + tagline --- */
+.emerge-dive__header {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  margin-bottom: clamp(24px, 3vw, 36px);
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.emerge-dive__header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF6B35, #FFB347, #FF6B35);
+}
+.emerge-dive__wordmark {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+.emerge-dive__tagline {
+  font-size: 17px;
+  color: var(--cream);
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+.emerge-dive__role-tag {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--tan);
+}
+@media (max-width: 640px) {
+  .emerge-dive__header { flex-direction: column; align-items: flex-start; }
+  .emerge-dive__wordmark { height: 32px; }
+}
+
+/* --- Intro paragraph --- */
+.emerge-dive__intro {
+  max-width: 860px;
+  font-size: 17px;
+  color: var(--cream);
+  margin: 0 0 clamp(28px, 3vw, 44px);
+  line-height: 1.6;
+}
+
+/* --- Stats row: 6 columns --- */
+.emerge-dive__stats--6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+@media (max-width: 960px) {
+  .emerge-dive__stats--6 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .emerge-dive__stats--6 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- Grants & recognition banner --- */
+.emerge-dive__grants {
+  margin: clamp(20px, 3vw, 36px) 0;
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+}
+.emerge-dive__grants-label {
+  color: var(--hunter-bright);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  margin-bottom: 16px;
+}
+.emerge-dive__grants-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media (max-width: 800px) {
+  .emerge-dive__grants-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .emerge-dive__grants-grid { grid-template-columns: 1fr; }
+}
+.emerge-dive__grant {
+  padding: 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  text-align: center;
+}
+.emerge-dive__grant-amount {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 600;
+  color: var(--cream-bright);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.emerge-dive__grant-source {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--sage);
+  line-height: 1.4;
+}
+.emerge-dive__grants-featured {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--hairline);
+  font-size: 14px;
+  color: var(--cream);
+}
+.emerge-dive__grants-featured .mono {
+  color: var(--tan);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  margin-right: 4px;
+}
+
+/* --- Three-column deep dive --- */
+.emerge-dive__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: clamp(16px, 2vw, 28px);
+  align-items: start;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+@media (max-width: 1100px) {
+  .emerge-dive__cols { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .emerge-dive__cols { grid-template-columns: 1fr; gap: 40px; }
+}
+.emerge-dive__col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Column headers --- */
+.emerge-dive__col-header {
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.emerge-dive__col-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.emerge-dive__col-header--product::before {
+  background: linear-gradient(90deg, #FF6B35, #FFB347);
+}
+.emerge-dive__col-header--design::before {
+  background: linear-gradient(90deg, #C084FC, #60A5FA, #34D399);
+}
+.emerge-dive__col-header--gtm::before {
+  background: linear-gradient(90deg, #34D399, #FFB347, #FF6B35);
+}
+.emerge-dive__col-kicker {
+  color: var(--sage) !important;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+}
+.emerge-dive__col-header h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 600;
+  color: var(--cream-bright);
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+.emerge-dive__col-sub {
+  font-size: 14px;
+  color: var(--cream);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Body sections --- */
+.emerge-dive__body { padding: 0; }
+.emerge-dive__body-head {
+  color: var(--hunter-bright) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.14em !important;
+  margin: 0 0 10px !important;
+}
+.emerge-dive__features {
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+.emerge-dive__features li {
+  font-size: 13px !important;
+  line-height: 1.5;
+}
+
+/* --- Gallery grids --- */
+.emerge-dive__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.emerge-dive__gallery-label {
+  color: var(--tan) !important;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.emerge-dive__gallery-grid {
+  display: grid;
+  gap: 8px;
+}
+.emerge-dive__gallery-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.emerge-dive__gallery-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.emerge-dive__gallery-img {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--bg-2);
+  aspect-ratio: 1;
+  transition: transform .35s var(--ease), border-color .35s var(--ease);
+}
+.emerge-dive__gallery-grid--2 .emerge-dive__gallery-img {
+  aspect-ratio: 4 / 3;
+}
+.emerge-dive__gallery-img:hover {
+  transform: translateY(-2px);
+  border-color: #FF6B35;
+}
+.emerge-dive__gallery-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Hero image (full-width interface shot) --- */
+.emerge-dive__hero {
+  margin-top: clamp(32px, 4vw, 56px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--bg-2);
+}
+.emerge-dive__hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .6s var(--ease);
+}
+.emerge-dive__hero:hover img {
+  transform: scale(1.02);
+}
+
+/* --- Links row --- */
+.emerge-dive__links {
+  margin-top: 20px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.emerge-dive__links a {
+  color: var(--hunter-bright);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  transition: color .25s var(--ease);
+}
+.emerge-dive__links a:hover {
+  color: #FF6B35;
+}
+
+/* ==========================================================================
+   SECTION — Foundation / Rodeo Deep Dive (§ 04.5)
    ========================================================================== */
 .rodeo-dive {
   padding: clamp(60px, 8vw, 120px) var(--pad);
