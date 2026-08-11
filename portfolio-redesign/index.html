@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAPACITR — Portfolio Redesign</title>
+<style>
+  :root{
+    --page:#070B09;
+    --phone:#0C1510;
+    --card:#121D16;
+    --panel:#0E1711;
+    --border:#1D2B22;
+    --border-soft:#182319;
+    --ink:#F2F7F3;
+    --ink-2:#9DB2A4;
+    --ink-3:#5F7368;
+    --green:#3ADFA2;
+    --green-dim:#1E5C45;
+    --red:#FF6257;
+    --red-deep:#FF4B23;
+    --amber:#FFB020;
+    --teal:#2DE2C5;
+    --mono:"SF Mono", ui-monospace, "Cascadia Mono", "Roboto Mono", Menlo, monospace;
+    --sans:-apple-system, "SF Pro Text", "Segoe UI", Inter, Roboto, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--page);font-family:var(--sans);color:var(--ink);
+    background-image:radial-gradient(1100px 500px at 70% -10%, #12251B55, transparent);
+    min-height:100vh;}
+  .wrap{display:flex;gap:56px;justify-content:center;align-items:flex-start;
+    padding:56px 32px;flex-wrap:wrap}
+
+  /* ============ PHONE ============ */
+  .phone{width:400px;flex:none;background:var(--phone);border:1px solid #223328;
+    border-radius:44px;padding:14px 14px 20px;box-shadow:0 40px 90px -30px #000C;
+    position:sticky;top:32px}
+  .screen{border-radius:32px;overflow:hidden;background:var(--phone);
+    height:870px;position:relative;display:flex;flex-direction:column}
+  .content{flex:1;overflow-y:auto;scrollbar-width:none}
+  .content::-webkit-scrollbar{display:none}
+
+  .appbar{display:flex;align-items:center;justify-content:space-between;
+    padding:18px 18px 14px}
+  .wordmark{font-family:var(--mono);font-weight:700;letter-spacing:.14em;
+    font-size:15px;color:var(--red-deep);border:1.5px solid var(--red-deep);
+    padding:4px 10px;display:inline-flex;gap:8px;align-items:center}
+  .wordmark::before{content:"⊟";font-size:13px}
+  .avatar{width:30px;height:30px;border-radius:50%;
+    background:conic-gradient(from 30deg,#FF4B23,#FFB020,#3ADFA2,#FF4B23)}
+
+  /* ---- portfolio summary ---- */
+  .summary{padding:8px 18px 4px}
+  .sum-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+    color:var(--ink-3);text-transform:uppercase;margin-bottom:8px}
+  .sum-grid .cell{padding:11px 12px 10px}
+  .sum-grid .v{font-size:16.5px;font-weight:700}
+  .sum-sub{display:flex;gap:18px;margin-top:12px}
+  .sum-sub div{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+  .sum-sub b{color:var(--ink);font-weight:600}
+  .neg{color:var(--red)} .pos{color:var(--green)}
+
+  /* ---- venue tabs ---- */
+  .vlabel{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+    color:var(--ink-3);text-transform:uppercase;padding:16px 18px 10px}
+  .venue-tabs{display:flex;gap:8px;padding:0 12px;overflow-x:auto;scrollbar-width:none}
+  .venue-tabs::-webkit-scrollbar{display:none}
+  .vtab{display:flex;align-items:center;gap:7px;flex:none;
+    background:var(--card);border:1.5px solid var(--border);border-radius:14px;
+    color:var(--ink-2);font:inherit;font-size:13px;font-weight:600;
+    padding:10px 14px;cursor:pointer;transition:.15s}
+  .vtab .vico{width:18px;height:18px;border-radius:5px;display:inline-flex;
+    align-items:center;justify-content:center;font-size:11px;font-weight:800}
+  .vtab .cnt{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+  .vtab.active{border-color:var(--teal);color:var(--teal);background:#0E1D18}
+  .vtab.active .cnt{color:var(--teal)}
+  .vico.hl{background:#0E2B25;color:var(--teal)}
+  .vico.pm{background:#2740B8;color:#BFD0FF}
+  .vico.rh{background:#C6F432;color:#1A2405}
+
+  /* ---- open/closed tabs ---- */
+  .oc{display:flex;gap:22px;padding:14px 18px 12px}
+  .octab{background:none;border:none;font:inherit;font-size:14.5px;font-weight:650;
+    color:var(--ink-3);cursor:pointer;padding:0 0 6px;border-bottom:2px solid transparent}
+  .octab.active{color:var(--green);border-bottom-color:var(--green)}
+
+  /* ---- sections/panels ---- */
+  .vpanel{padding:0 12px 14px;display:none}
+  .vpanel.active{display:block}
+  .sec-grid{margin-bottom:10px}
+  .sec-grid .v{font-size:14.5px;font-weight:700}
+  .avail{display:flex;justify-content:space-between;align-items:center;
+    background:#101A14;border:1px solid var(--border-soft);border-radius:12px;
+    padding:9px 14px;margin-bottom:4px}
+  .avail .l{font-size:13px;color:var(--ink-3)}
+  .avail .r{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink-2);
+    display:flex;align-items:center;gap:6px}
+  .coin{width:16px;height:16px;border-radius:50%;color:#fff;font-size:9px;
+    font-weight:800;display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--sans)}
+  .coin.usdc{background:#2775CA}
+  .coin.usdg{background:#5A7D12}
+
+  /* ---- rows ---- */
+  .cards{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--card);border:1px solid var(--border-soft);
+    border-radius:18px;overflow:hidden}
+  .row{display:flex;align-items:center;gap:10px;width:100%;background:none;
+    border:none;color:inherit;font:inherit;text-align:left;cursor:pointer;
+    padding:13px 14px}
+  .row:active{background:#16241B}
+  .crow{display:flex;align-items:center;gap:10px;padding:13px 14px}
+  .c-logo{width:36px;height:36px;border-radius:50%;flex:none;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:8px;font-weight:800;color:#E11}
+  .c-logo.sp{background:#12305B;color:#8FC1FF;font-size:9px}
+  .c-logo.seal{background:#1B2B4B;color:#D8C27A;font-size:14px}
+  .c-logo.zec{background:#F4B728;color:#231F20;font-size:13px;font-weight:900}
+  .c-logo.nvda{background:#1F3D12;color:#76B900;font-size:7.5px}
+  .c-name{min-width:0;flex:1}
+  .c-ticker{font-size:15px;font-weight:700;letter-spacing:.02em;
+    display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden}
+  .c-ticker .q{overflow:hidden;text-overflow:ellipsis}
+  .c-meta{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);
+    margin-top:3px;letter-spacing:.05em;white-space:nowrap;overflow:hidden;
+    text-overflow:ellipsis}
+  .chip{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;
+    padding:2.5px 7px;border-radius:5px;flex:none}
+  .chip.short{background:#3A1512;color:var(--red)}
+  .chip.long{background:#0F3327;color:var(--green)}
+  .chip.lev{background:#1B2820;color:var(--ink-2);border:1px solid var(--border)}
+  .chip.yes{background:#0F3327;color:var(--green)}
+  .chip.spot{background:#1B2820;color:var(--ink-2);border:1px solid var(--border)}
+  .c-money{text-align:right;flex:none}
+  .c-value{font-family:var(--mono);font-size:15px;font-weight:700;
+    font-variant-numeric:tabular-nums}
+  .pill{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);
+    font-size:10px;font-weight:700;padding:2.5px 8px;border-radius:999px;
+    margin-top:4px;font-variant-numeric:tabular-nums}
+  .pill.pos{background:#0F3327;color:var(--green);border:1px solid #1E5C45}
+  .pill.neg{background:#3A1512;color:var(--red);border:1px solid #6B2119}
+  .chev{flex:none;color:var(--ink-3);font-size:14px}
+  .explorer{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);margin-top:4px}
+  .empty{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:center;
+    padding:26px 0;letter-spacing:.06em}
+
+  /* ---- shared cells ---- */
+  .c-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;
+    background:var(--border-soft);border-radius:12px;overflow:hidden}
+  .cell{background:var(--panel);padding:9px 11px 8px}
+  .cell .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+    color:var(--ink-3);text-transform:uppercase}
+  .cell .v{font-family:var(--mono);font-size:12.5px;font-weight:600;margin-top:4px;
+    font-variant-numeric:tabular-nums}
+  .cell .s{font-family:var(--mono);font-size:9px;color:var(--ink-3);margin-top:2px}
+  .cell.hi{background:#15221B}
+  .cell.hi .v{font-size:13.5px}
+
+  /* ---- meters ---- */
+  .liq,.odds{margin-top:10px;background:var(--panel);border-radius:12px;padding:10px 12px 12px}
+  .liq-row,.odds-row{display:flex;justify-content:space-between;align-items:baseline}
+  .liq-row .k,.odds-row .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:var(--ink-3)}
+  .liq-row .v{font-family:var(--mono);font-size:12px;font-weight:600}
+  .dist{font-family:var(--mono);font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px}
+  .dist.warn{background:#33260C;color:var(--amber)}
+  .dist.safe{background:#0F3327;color:var(--green)}
+  .track{position:relative;height:6px;border-radius:3px;margin-top:10px;
+    background:linear-gradient(90deg,#1E5C45,#8a6a1e 65%,#7c2d22)}
+  .track.rev{background:linear-gradient(90deg,#7c2d22,#8a6a1e 35%,#1E5C45)}
+  .marker{position:absolute;top:-3px;width:2.5px;height:12px;border-radius:2px;
+    background:var(--ink);box-shadow:0 0 0 2px #0E1711}
+  .track-labels,.otrack-labels{display:flex;justify-content:space-between;margin-top:6px}
+  .track-labels span,.otrack-labels span{font-family:var(--mono);font-size:8.5px;
+    letter-spacing:.1em;color:var(--ink-3)}
+  .odds-now{font-family:var(--mono);font-size:13px;font-weight:700}
+  .odds-entry{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+  .otrack{position:relative;height:6px;border-radius:3px;margin-top:10px;background:#1B2820}
+  .ofill{position:absolute;inset:0 auto 0 0;border-radius:3px}
+  .ofill.up{background:var(--green)} .ofill.down{background:var(--red)}
+  .otick{position:absolute;top:-2px;width:2px;height:10px;background:var(--ink-3);border-radius:2px}
+
+  .c-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+  .venue{font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.04em}
+  .venue b{color:var(--ink-2);font-weight:600}
+  .closebtn{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--red-deep);border:1.5px solid #7A2A14;
+    background:transparent;border-radius:9px;padding:7px 14px;cursor:pointer}
+  .closebtn:hover{border-color:var(--red-deep);background:#FF4B2311}
+
+  /* ---- bottom nav ---- */
+  .nav{display:flex;justify-content:space-around;padding:14px 10px 10px;
+    border-top:1px solid var(--border-soft);background:var(--phone)}
+  .nav div{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+    color:var(--ink-3);text-align:center}
+  .nav div.on{color:var(--green)}
+  .nav span{display:block;font-size:15px;margin-bottom:4px}
+
+  /* ============ BOTTOM SHEET ============ */
+  .scrim{position:absolute;inset:0;background:rgba(2,6,4,.62);opacity:0;
+    pointer-events:none;transition:opacity .28s ease;z-index:5}
+  .screen.sheet-open .scrim{opacity:1;pointer-events:auto}
+  .sheet{position:absolute;left:0;right:0;bottom:0;height:65%;
+    background:#111C15;border-top:1px solid #26382C;
+    border-radius:26px 26px 0 0;transform:translateY(103%);
+    transition:transform .34s cubic-bezier(.3,.9,.3,1);z-index:6;
+    display:flex;flex-direction:column;box-shadow:0 -24px 60px -20px #000C}
+  .screen.sheet-open .sheet{transform:translateY(0)}
+  .grabber{width:38px;height:4px;border-radius:2px;background:#2C3E32;
+    margin:10px auto 2px;flex:none}
+  .sheet-head{display:flex;align-items:center;gap:10px;padding:8px 16px 12px;
+    border-bottom:1px solid var(--border-soft);flex:none}
+  .sheet-head .c-name{flex:1;min-width:0}
+  .sheet-x{width:28px;height:28px;border-radius:50%;background:#1B2820;
+    color:var(--ink-2);border:none;font-size:12px;cursor:pointer;flex:none}
+  .sheet-body{flex:1;overflow-y:auto;padding:13px 16px 18px;scrollbar-width:none}
+  .sheet-body::-webkit-scrollbar{display:none}
+
+  /* ---- chart ---- */
+  .chart{background:var(--panel);border-radius:12px;padding:11px 12px 6px;margin-bottom:10px}
+  .chart-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .chart-top .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:var(--ink-3)}
+  .tf{display:flex;gap:4px}
+  .tf span{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;color:var(--ink-3);
+    padding:3px 7px;border-radius:6px}
+  .tf .on{background:#1B2820;color:var(--ink)}
+  .chart svg{display:block;width:100%}
+
+  /* ============ ANNOTATIONS ============ */
+  .notes{max-width:560px;min-width:340px;flex:1}
+  .notes h1{font-family:var(--mono);font-size:21px;letter-spacing:.02em;margin-bottom:6px}
+  .notes .sub{color:var(--ink-2);font-size:14px;line-height:1.55;margin-bottom:28px}
+  .note{border-left:2px solid var(--green-dim);padding:2px 0 2px 18px;margin-bottom:26px}
+  .note h2{font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--green);margin-bottom:8px}
+  .note p{color:var(--ink-2);font-size:13.5px;line-height:1.6;margin-bottom:8px}
+  .note p:last-child{margin-bottom:0}
+  .note b{color:var(--ink);font-weight:600}
+  .note .fields{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);
+    background:var(--card);border:1px solid var(--border-soft);border-radius:10px;
+    padding:10px 14px;line-height:1.9;margin:10px 0}
+  .note .fields em{font-style:normal;color:var(--ink-3)}
+
+  @media (max-width:900px){.wrap{padding:24px 12px}.phone{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= PHONE MOCKUP ================= -->
+  <div class="phone"><div class="screen" id="screen">
+
+    <div class="content">
+      <div class="appbar">
+        <span class="wordmark">CAPACITR</span>
+        <div class="avatar"></div>
+      </div>
+
+      <div class="summary">
+        <div class="sum-label">Open Positions</div>
+        <div class="c-grid sum-grid">
+          <div class="cell hi"><div class="k">Value</div><div class="v">$339.67</div></div>
+          <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$1.38</div></div>
+          <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−0.4%</div></div>
+        </div>
+        <div class="sum-sub">
+          <div>INVESTED <b>$341.05</b></div>
+          <div>AVAILABLE <b>$129.93</b></div>
+        </div>
+      </div>
+
+      <div class="vlabel">Positions</div>
+      <div class="venue-tabs">
+        <button class="vtab active" data-v="hl"><span class="vico hl">∞</span>Hyperliquid <span class="cnt">2</span></button>
+        <button class="vtab" data-v="pm"><span class="vico pm">◨</span>Polymarket <span class="cnt">2</span></button>
+        <button class="vtab" data-v="rh"><span class="vico rh">✒</span>Robinhood <span class="cnt">1</span></button>
+      </div>
+
+      <!-- ============ HYPERLIQUID ============ -->
+      <div class="vpanel active" data-panel="hl">
+        <div class="oc">
+          <button class="octab active" data-oc="open">Open</button>
+          <button class="octab" data-oc="closed">Closed</button>
+        </div>
+        <div class="oc-open">
+          <div class="c-grid sec-grid">
+            <div class="cell hi"><div class="k">Value</div><div class="v">$22.23</div></div>
+            <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$1.01</div></div>
+            <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−4.4%</div></div>
+          </div>
+          <div class="avail" style="margin-bottom:10px"><span class="l">Available Balance</span>
+            <span class="r"><span class="coin usdc">$</span>$20.31</span></div>
+          <div class="cards">
+            <div class="card"><button class="row" data-pos="sndk">
+              <div class="c-logo">SanDisk</div>
+              <div class="c-name">
+                <div class="c-ticker">SNDK <span class="chip lev">10×</span><span class="chip short">SHORT</span></div>
+                <div class="c-meta">LIQ $1,349.10 · 4.18% AWAY</div>
+              </div>
+              <div class="c-money"><div class="c-value">$19.54</div><div class="pill neg">↓ $0.99</div></div>
+              <div class="chev">›</div>
+            </button></div>
+            <div class="card"><button class="row" data-pos="sp500">
+              <div class="c-logo sp">S&P</div>
+              <div class="c-name">
+                <div class="c-ticker">SP500 <span class="chip lev">20×</span><span class="chip long">LONG</span></div>
+                <div class="c-meta">LIQ $7,352.75 · 4.92% AWAY</div>
+              </div>
+              <div class="c-money"><div class="c-value">$2.69</div><div class="pill neg">↓ $0.02</div></div>
+              <div class="chev">›</div>
+            </button></div>
+          </div>
+        </div>
+        <div class="oc-closed" hidden>
+          <div class="cards">
+            <div class="card"><div class="crow">
+              <div class="c-name"><div class="c-ticker">CL</div>
+                <div class="c-meta">CLOSE LONG · 0.642 @ $81.71 · AUG 11</div></div>
+              <div class="c-money"><div class="c-value pos">+$2.42</div>
+                <div class="explorer">Explorer ↗</div></div>
+            </div></div>
+            <div class="card"><div class="crow">
+              <div class="c-name"><div class="c-ticker">GOLD</div>
+                <div class="c-meta">CLOSE LONG · 0.0094 @ $4,398.00 · AUG 11</div></div>
+              <div class="c-money"><div class="c-value pos">+$0.54</div>
+                <div class="explorer">Explorer ↗</div></div>
+            </div></div>
+            <div class="card"><div class="crow">
+              <div class="c-name"><div class="c-ticker">MSFT</div>
+                <div class="c-meta">CLOSE LONG · 0.021 @ $504.40 · AUG 11</div></div>
+              <div class="c-money"><div class="c-value pos">+$0.30</div>
+                <div class="explorer">Explorer ↗</div></div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ POLYMARKET ============ -->
+      <div class="vpanel" data-panel="pm">
+        <div class="oc">
+          <button class="octab active" data-oc="open">Open</button>
+          <button class="octab" data-oc="closed">Closed</button>
+        </div>
+        <div class="oc-open">
+          <div class="c-grid sec-grid">
+            <div class="cell hi"><div class="k">Value</div><div class="v">$67.34</div></div>
+            <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$0.30</div></div>
+            <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−0.4%</div></div>
+          </div>
+          <div class="avail" style="margin-bottom:10px"><span class="l">Available Balance</span>
+            <span class="r"><span class="coin usdc">$</span>$104.64</span></div>
+          <div class="cards">
+            <div class="card"><button class="row" data-pos="rubio">
+              <div class="c-logo seal">◉</div>
+              <div class="c-name">
+                <div class="c-ticker"><span class="q">Marco Rubio</span> <span class="chip yes">YES</span></div>
+                <div class="c-meta">PRESIDENTIAL ELECTION WINNER 2028 · 13.2%</div>
+              </div>
+              <div class="c-money"><div class="c-value">$28.47</div><div class="pill pos">↑ $10.67</div></div>
+              <div class="chev">›</div>
+            </button></div>
+            <div class="card"><button class="row" data-pos="zcash">
+              <div class="c-logo zec">ⓩ</div>
+              <div class="c-name">
+                <div class="c-ticker"><span class="q">Zcash $700 by Dec 31?</span> <span class="chip yes">YES</span></div>
+                <div class="c-meta">CRYPTO · 43.0%</div>
+              </div>
+              <div class="c-money"><div class="c-value">$38.87</div><div class="pill neg">↓ $10.97</div></div>
+              <div class="chev">›</div>
+            </button></div>
+          </div>
+        </div>
+        <div class="oc-closed" hidden>
+          <div class="cards">
+            <div class="card"><div class="crow">
+              <div class="c-name"><div class="c-ticker"><span class="q">S&P 500 best performer 2026?</span></div>
+                <div class="c-meta">CASHED OUT YES · 37.3 SH @ 69¢ · AUG 8</div></div>
+              <div class="c-money"><div class="c-value pos">+$0.93</div>
+                <div class="explorer">Polymarket ↗</div></div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ROBINHOOD ============ -->
+      <div class="vpanel" data-panel="rh">
+        <div class="oc">
+          <button class="octab active" data-oc="open">Open</button>
+          <button class="octab" data-oc="closed">Closed</button>
+        </div>
+        <div class="oc-open">
+          <div class="c-grid sec-grid">
+            <div class="cell hi"><div class="k">Value</div><div class="v">$250.10</div></div>
+            <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$0.07</div></div>
+            <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−0.03%</div></div>
+          </div>
+          <div class="avail" style="margin-bottom:10px"><span class="l">Available Balance</span>
+            <span class="r"><span class="coin usdg">G</span>$4.98 USDG</span></div>
+          <div class="cards">
+            <div class="card"><button class="row" data-pos="nvda">
+              <div class="c-logo nvda">NVIDIA</div>
+              <div class="c-name">
+                <div class="c-ticker">NVDA <span class="chip spot">SPOT</span></div>
+                <div class="c-meta">1.139 SHARES @ $219.64 AVG</div>
+              </div>
+              <div class="c-money"><div class="c-value">$250.10</div><div class="pill neg">↓ $0.07</div></div>
+              <div class="chev">›</div>
+            </button></div>
+          </div>
+        </div>
+        <div class="oc-closed" hidden>
+          <div class="empty">NO CLOSED POSITIONS YET</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div><span>⚡</span>SIGNALS</div>
+      <div><span>▣</span>AGENT</div>
+      <div><span>◷</span>ALERTS</div>
+      <div class="on"><span>▤</span>PORTFOLIO</div>
+    </div>
+
+    <!-- BOTTOM SHEET -->
+    <div class="scrim" id="scrim"></div>
+    <div class="sheet" id="sheet">
+      <div class="grabber"></div>
+      <div class="sheet-head" id="sheet-head"></div>
+      <div class="sheet-body" id="sheet-body"></div>
+    </div>
+
+  </div></div>
+
+  <!-- ================= ANNOTATIONS ================= -->
+  <aside class="notes">
+    <h1>Portfolio — reimagined</h1>
+    <p class="sub">Organized <b>by venue</b>, matching your live build: Hyperliquid · Polymarket · Robinhood tabs with open-position counts, and <b>Open / Closed</b> tabs inside each venue. Rows stay compact snapshots; tapping one slides the 65% bottom sheet with the chart (entry marked) and full detail. Everything is clickable in the mockup.</p>
+
+    <div class="note">
+      <h2>1 · One money row, three levels</h2>
+      <p>Portfolio, venue, and position all report through the identical labeled Value · P&L $ · P&L % row. The venue rollup + its Available Balance sit at the top of each Open tab, so "what do I have here and what's it doing" is answered before the first row.</p>
+    </div>
+
+    <div class="note">
+      <h2>2 · Venue tabs, like your build</h2>
+      <p>Venue-first matches how the money actually works — balances, fees, and settlement live per venue — and the count badge on each tab tells you where your open risk is before you switch. Robinhood shows its USDG balance; the others show USDC.</p>
+    </div>
+
+    <div class="note">
+      <h2>3 · Open vs Closed</h2>
+      <p>Open rows are the live snapshot (identity + risk one-liner + value + P&L pill). Closed rows are <b>receipts</b>: ticker, close side · size @ price · date, realized P&L, and the explorer link. No chevron — they open the explorer, not the sheet.</p>
+    </div>
+
+    <div class="note">
+      <h2>4 · The sheet — chart first</h2>
+      <p>Tapping an open row slides the bottom sheet: 1D price (or odds) with a <b>dashed line at your entry and a labeled dot at the moment you entered</b>, then basis row (Entry · Mark · Invested / Bet · To Win · Shares / Avg Cost for spot), performance row (Value · P&L · P&L %), the liq or odds meter (perps/predictions only — spot has none), venue + date, and Close / Cash out / Sell. Actions live only in the sheet.</p>
+    </div>
+
+    <div class="note">
+      <h2>5 · Dimensions covered</h2>
+      <p>All positions: entry, mark, $ invested, value, P&L $, P&L %. Perps add leverage, liq price, % to liquidation. Predictions add odds (entry → now), bet, to win, shares. Spot adds avg cost and share count. Venue level adds available balance per venue; portfolio level adds invested + total available.</p>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+const P = {
+  sndk:{
+    kind:'perp', logo:'<div class="c-logo">SanDisk</div>',
+    title:'SNDK <span class="chip lev">10×</span><span class="chip short">SHORT</span>',
+    meta:'HYPERLIQUID · OPENED AUG 6',
+    value:'$19.54', pill:'<div class="pill neg">↓ $0.99</div>', pos:false,
+    fmt:v=>'$'+v.toFixed(0),
+    series:[1259,1263,1271,1266,1274,1280,1287.5,1292,1285,1289,1297,1291,1295],
+    entryIdx:6, entryVal:1287.5, entryLabel:'ENTRY $1,287.50',
+    body:`
+      <div class="c-grid">
+        <div class="cell"><div class="k">Entry</div><div class="v">$1,287.50</div></div>
+        <div class="cell"><div class="k">Mark</div><div class="v">$1,295.00</div><div class="s neg">+0.58%</div></div>
+        <div class="cell"><div class="k">Invested</div><div class="v">$20.53</div><div class="s">size 0.159</div></div>
+        <div class="cell hi"><div class="k">Value</div><div class="v">$19.54</div></div>
+        <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$0.99</div></div>
+        <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−4.80%</div></div>
+      </div>
+      <div class="liq">
+        <div class="liq-row"><span class="k">LIQUIDATION&ensp;<span class="v">$1,349.10</span></span>
+          <span class="dist warn">4.18% away</span></div>
+        <div class="track"><div class="marker" style="left:12%"></div></div>
+        <div class="track-labels"><span>ENTRY 1,287.50</span><span>LIQ 1,349.10</span></div>
+      </div>
+      <div class="c-foot"><span class="venue">Hyperliquid ↗ · Opened Aug 6</span>
+        <button class="closebtn">Close</button></div>`
+  },
+  sp500:{
+    kind:'perp', logo:'<div class="c-logo sp">S&P</div>',
+    title:'SP500 <span class="chip lev">20×</span><span class="chip long">LONG</span>',
+    meta:'HYPERLIQUID · OPENED AUG 6',
+    value:'$2.69', pill:'<div class="pill neg">↓ $0.02</div>', pos:false,
+    fmt:v=>'$'+v.toFixed(0),
+    series:[7713,7719,7726,7731,7727,7735.4,7742,7737,7729,7734,7732.9],
+    entryIdx:5, entryVal:7735.4, entryLabel:'ENTRY $7,735.40',
+    body:`
+      <div class="c-grid">
+        <div class="cell"><div class="k">Entry</div><div class="v">$7,735.40</div></div>
+        <div class="cell"><div class="k">Mark</div><div class="v">$7,732.86</div><div class="s neg">−0.03%</div></div>
+        <div class="cell"><div class="k">Invested</div><div class="v">$2.71</div><div class="s">size 0.007</div></div>
+        <div class="cell hi"><div class="k">Value</div><div class="v">$2.69</div></div>
+        <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$0.02</div></div>
+        <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−0.7%</div></div>
+      </div>
+      <div class="liq">
+        <div class="liq-row"><span class="k">LIQUIDATION&ensp;<span class="v">$7,352.75</span></span>
+          <span class="dist warn">4.92% away</span></div>
+        <div class="track rev"><div class="marker" style="left:99%"></div></div>
+        <div class="track-labels"><span>LIQ 7,352.75</span><span>ENTRY 7,735.40</span></div>
+      </div>
+      <div class="c-foot"><span class="venue">Hyperliquid ↗ · Opened Aug 6</span>
+        <button class="closebtn">Close</button></div>`
+  },
+  rubio:{
+    kind:'pred', logo:'<div class="c-logo seal">◉</div>',
+    title:'<span class="q">Marco Rubio</span> <span class="chip yes">YES</span>',
+    meta:'PRESIDENTIAL ELECTION WINNER 2028 · POLYMARKET',
+    value:'$28.47', pill:'<div class="pill pos">↑ $10.67</div>', pos:true,
+    fmt:v=>v.toFixed(0)+'¢',
+    series:[6.8,7.1,7.9,7.5,8.2,9.4,10.8,10.1,11.6,12.4,13.0,13.2],
+    entryIdx:4, entryVal:8.2, entryLabel:'ENTRY 8.2¢',
+    body:`
+      <div class="c-grid">
+        <div class="cell"><div class="k">Bet</div><div class="v">$17.80</div><div class="s">@ 8.2¢ avg</div></div>
+        <div class="cell"><div class="k">To Win</div><div class="v">$217.32</div><div class="s">if YES resolves</div></div>
+        <div class="cell"><div class="k">Shares</div><div class="v">217.3</div></div>
+        <div class="cell hi"><div class="k">Value</div><div class="v">$28.47</div></div>
+        <div class="cell hi"><div class="k">P&L</div><div class="v pos">+$10.67</div></div>
+        <div class="cell hi"><div class="k">P&L %</div><div class="v pos">+59.9%</div></div>
+      </div>
+      <div class="odds">
+        <div class="odds-row"><span class="k">ODDS&ensp;<span class="odds-now pos">13.2%</span></span>
+          <span class="odds-entry">entry 8.2¢ → now 13.2¢</span></div>
+        <div class="otrack"><div class="ofill up" style="width:13.2%"></div>
+          <div class="otick" style="left:8.2%"></div></div>
+        <div class="otrack-labels"><span>0%</span><span>RESOLVES AT 100%</span></div>
+      </div>
+      <div class="c-foot"><span class="venue">Polymarket ↗ · Opened Aug 5</span>
+        <button class="closebtn">Cash out</button></div>`
+  },
+  zcash:{
+    kind:'pred', logo:'<div class="c-logo zec">ⓩ</div>',
+    title:'<span class="q">Zcash $700 by Dec 31?</span> <span class="chip yes">YES</span>',
+    meta:'CRYPTO · POLYMARKET',
+    value:'$38.87', pill:'<div class="pill neg">↓ $10.97</div>', pos:false,
+    fmt:v=>v.toFixed(0)+'¢',
+    series:[58,60.5,57,55.1,52,49,50.5,46,44.5,43.9,43.0],
+    entryIdx:3, entryVal:55.1, entryLabel:'ENTRY 55.1¢',
+    body:`
+      <div class="c-grid">
+        <div class="cell"><div class="k">Bet</div><div class="v">$49.84</div><div class="s">@ 55.1¢ avg</div></div>
+        <div class="cell"><div class="k">To Win</div><div class="v">$90.39</div><div class="s">if YES resolves</div></div>
+        <div class="cell"><div class="k">Shares</div><div class="v">90.4</div></div>
+        <div class="cell hi"><div class="k">Value</div><div class="v">$38.87</div></div>
+        <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$10.97</div></div>
+        <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−22.0%</div></div>
+      </div>
+      <div class="odds">
+        <div class="odds-row"><span class="k">ODDS&ensp;<span class="odds-now neg">43.0%</span></span>
+          <span class="odds-entry">entry 55.1¢ → now 43.0¢</span></div>
+        <div class="otrack"><div class="ofill down" style="width:43%"></div>
+          <div class="otick" style="left:55.1%"></div></div>
+        <div class="otrack-labels"><span>0%</span><span>RESOLVES AT 100%</span></div>
+      </div>
+      <div class="c-foot"><span class="venue">Polymarket ↗ · Opened Aug 4</span>
+        <button class="closebtn">Cash out</button></div>`
+  },
+  nvda:{
+    kind:'perp', logo:'<div class="c-logo nvda">NVIDIA</div>',
+    title:'NVDA <span class="chip spot">SPOT</span>',
+    meta:'ROBINHOOD · BOUGHT AUG 11',
+    value:'$250.10', pill:'<div class="pill neg">↓ $0.07</div>', pos:false,
+    fmt:v=>'$'+v.toFixed(0),
+    series:[216.8,217.5,218.9,219.64,220.8,221.4,220.2,219.1,219.9,219.58],
+    entryIdx:3, entryVal:219.64, entryLabel:'ENTRY $219.64',
+    body:`
+      <div class="c-grid">
+        <div class="cell"><div class="k">Avg Cost</div><div class="v">$219.64</div></div>
+        <div class="cell"><div class="k">Mark</div><div class="v">$219.58</div><div class="s neg">−0.03%</div></div>
+        <div class="cell"><div class="k">Invested</div><div class="v">$250.17</div><div class="s">1.139 shares</div></div>
+        <div class="cell hi"><div class="k">Value</div><div class="v">$250.10</div></div>
+        <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$0.07</div></div>
+        <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−0.03%</div></div>
+      </div>
+      <div class="c-foot"><span class="venue">Robinhood ↗ · Bought Aug 11</span>
+        <button class="closebtn">Sell</button></div>`
+  }
+};
+
+function chartSVG(p){
+  const W=336,H=150,padT=14,padB=18,padL=6,padR=44;
+  const s=p.series, n=s.length;
+  const min=Math.min(...s), max=Math.max(...s), span=(max-min)||1;
+  const lo=min-span*.12, hi=max+span*.12;
+  const x=i=>padL+(W-padL-padR)*i/(n-1);
+  const y=v=>padT+(H-padT-padB)*(1-(v-lo)/(hi-lo));
+  const col = p.pos ? '#3ADFA2' : '#FF6257';
+  let path='M'+x(0)+' '+y(s[0]);
+  for(let i=1;i<n;i++) path+=' L'+x(i)+' '+y(s[i]);
+  const area=path+' L'+x(n-1)+' '+(H-padB)+' L'+x(0)+' '+(H-padB)+' Z';
+  const ey=y(p.entryVal), ex=x(p.entryIdx), ly=y(s[n-1]);
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g-${ex}-${ey}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${col}" stop-opacity=".22"/>
+      <stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
+    <line x1="${padL}" y1="${ey}" x2="${W-padR+2}" y2="${ey}" stroke="#5F7368" stroke-width="1" stroke-dasharray="3 4"/>
+    <path d="${area}" fill="url(#g-${ex}-${ey})"/>
+    <path d="${path}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="${ex}" cy="${ey}" r="4.5" fill="#0E1711" stroke="#F2F7F3" stroke-width="2"/>
+    <circle cx="${x(n-1)}" cy="${ly}" r="4" fill="${col}" stroke="#0E1711" stroke-width="2"/>
+    <text x="${ex-9}" y="${s[0]>p.entryVal?ey+14:ey-7}" text-anchor="end" font-family="SF Mono,ui-monospace,Menlo,monospace" font-size="8" letter-spacing=".08em" fill="#9DB2A4">${p.entryLabel}</text>
+    <text x="${W-padR+8}" y="${ly+3}" font-family="SF Mono,ui-monospace,Menlo,monospace" font-size="8.5" font-weight="700" fill="${col}">${p.fmt(s[n-1])}</text>
+    <text x="${W-padR+8}" y="${ey+3}" font-family="SF Mono,ui-monospace,Menlo,monospace" font-size="8" fill="#5F7368">${p.fmt(p.entryVal)}</text>
+  </svg>`;
+}
+
+const screen=document.getElementById('screen');
+function openSheet(id){
+  const p=P[id];
+  document.getElementById('sheet-head').innerHTML=
+    p.logo+
+    `<div class="c-name"><div class="c-ticker">${p.title}</div>
+     <div class="c-meta">${p.meta}</div></div>
+     <div class="c-money"><div class="c-value">${p.value}</div>${p.pill}</div>
+     <button class="sheet-x" onclick="closeSheet()">✕</button>`;
+  document.getElementById('sheet-body').innerHTML=
+    `<div class="chart">
+       <div class="chart-top"><span class="k">${p.kind==='perp'?'PRICE':'ODDS'} · 1D</span>
+         <div class="tf"><span>1H</span><span class="on">1D</span><span>1W</span><span>MAX</span></div>
+       </div>${chartSVG(p)}
+     </div>`+p.body;
+  screen.classList.add('sheet-open');
+}
+function closeSheet(){screen.classList.remove('sheet-open')}
+document.querySelectorAll('[data-pos]').forEach(b=>
+  b.addEventListener('click',()=>openSheet(b.dataset.pos)));
+document.getElementById('scrim').addEventListener('click',closeSheet);
+
+/* venue tabs */
+document.querySelectorAll('.vtab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.vtab').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelectorAll('.vpanel').forEach(pn=>
+    pn.classList.toggle('active',pn.dataset.panel===t.dataset.v));
+}));
+/* open/closed tabs (scoped per venue panel) */
+document.querySelectorAll('.vpanel').forEach(panel=>{
+  panel.querySelectorAll('.octab').forEach(t=>t.addEventListener('click',()=>{
+    panel.querySelectorAll('.octab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    panel.querySelector('.oc-open').hidden = t.dataset.oc!=='open';
+    panel.querySelector('.oc-closed').hidden = t.dataset.oc!=='closed';
+  }));
+});
+</script>
+</body>
+</html>
