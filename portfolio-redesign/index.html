@@ -551,7 +551,9 @@
 
     <div class="note">
       <h2>2 · P&L ledger</h2>
-      <p>One row, three truths: <b>Open</b> (unrealized, changes with the market), <b>Realized</b> (banked), <b>All-Time</b> (their sum — the only honest scoreboard). Same labeled-cell treatment as every other number on the page. The "excludes 6 Polymarket exits" caveat belongs in a tap-through detail, not as body text under the hero.</p>
+      <p>One row, three truths, with a fixed relationship: <b>All-Time = Realized + Open</b>.</p>
+      <div class="fields">OPEN — unrealized P&L on positions still open; moves with the market<br>REALIZED — banked P&L from exited trades only; the market can't take it back<br>ALL-TIME — Realized + Open: "am I actually up or down overall, right now?"</div>
+      <p>Here: +$6.20 banked, −$1.38 on the open book → +$4.82 true scoreboard. Close everything and Realized becomes +$4.82, Open goes to zero, All-Time doesn't move — which is why it's the honest number. The "excludes 6 Polymarket exits" caveat belongs as a small ⓘ tap-through on the Realized cell (if Realized is incomplete, All-Time is too), not as body text under the hero.</p>
     </div>
 
     <div class="note">
