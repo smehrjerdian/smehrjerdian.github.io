@@ -60,6 +60,61 @@
   .sum-sub b{color:var(--ink);font-weight:600}
   .neg{color:var(--red)} .pos{color:var(--green)}
 
+  /* ---- profile ---- */
+  .profile{display:flex;align-items:center;gap:11px;padding:2px 18px 14px}
+  .pf-avatar{width:40px;height:40px;border-radius:50%;flex:none;
+    background:conic-gradient(from 200deg,#7FD8C9,#F3D9A4,#8AA3E8,#7FD8C9)}
+  .pf-name{flex:1;min-width:0}
+  .pf-handle{font-size:16px;font-weight:800}
+  .pf-sub{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-top:2px}
+  .invitebtn{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;
+    color:var(--green);border:1.5px solid var(--green-dim);background:transparent;
+    border-radius:9px;padding:7px 12px;cursor:pointer}
+
+  /* ---- net worth ---- */
+  .networth{font-family:var(--mono);font-size:34px;font-weight:700;line-height:1;
+    letter-spacing:-.01em;font-variant-numeric:tabular-nums;display:flex;
+    align-items:baseline;gap:10px;flex-wrap:wrap}
+  .nw-pnl{font-size:12px;font-weight:600}
+  .split-bar{display:flex;gap:2px;height:8px;border-radius:4px;overflow:hidden;
+    margin-top:14px}
+  .seg{border-radius:2px}
+  .seg.rest{background:var(--green)}
+  .seg.locked{background:#FF8A3D}
+  .split-legend{display:flex;gap:20px;margin-top:9px}
+  .split-legend div{font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+    color:var(--ink-3);display:flex;align-items:center;gap:6px}
+  .split-legend b{color:var(--ink);font-weight:600;font-size:11.5px}
+  .dot{width:7px;height:7px;border-radius:2px;display:inline-block}
+  .dot.rest{background:var(--green)}
+  .dot.locked{background:#FF8A3D}
+
+  /* ---- wallet hub ---- */
+  .wallet-card{background:var(--card);border:1px solid var(--border-soft);
+    border-radius:14px;padding:13px 14px;margin-bottom:8px}
+  .wc-top{display:flex;justify-content:space-between;align-items:baseline}
+  .wc-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-3)}
+  .wc-v{font-family:var(--mono);font-size:17px;font-weight:700;
+    font-variant-numeric:tabular-nums}
+  .wc-btns{display:flex;gap:8px;margin-top:11px}
+  .wbtn{flex:1;font-family:var(--mono);font-size:10.5px;font-weight:700;
+    letter-spacing:.1em;padding:9px 0;border-radius:9px;cursor:pointer;
+    background:transparent;border:1.5px solid var(--border);color:var(--ink-2)}
+  .wbtn.fill{background:var(--red-deep);border-color:var(--red-deep);color:#FFF}
+
+  /* ---- venue cash rows ---- */
+  .vcash{background:var(--card);border:1px solid var(--border-soft);border-radius:14px;
+    overflow:hidden}
+  .vrow{display:flex;align-items:center;gap:9px;padding:11px 14px;font-size:13.5px;
+    font-weight:600;color:var(--ink)}
+  .vrow + .vrow{border-top:1px solid var(--border-soft)}
+  .vrow .vico{width:18px;height:18px;border-radius:5px;display:inline-flex;
+    align-items:center;justify-content:center;font-size:11px;font-weight:800;flex:none}
+  .vrow .curr{font-family:var(--mono);font-size:8.5px;color:var(--ink-3);
+    border:1px solid var(--border);border-radius:5px;padding:2px 6px;letter-spacing:.08em}
+  .vrow .vr{margin-left:auto;font-family:var(--mono);font-size:13px;font-weight:600;
+    color:var(--ink-2);display:flex;align-items:center;gap:6px}
+
   /* ---- venue tabs ---- */
   .vlabel{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
     color:var(--ink-3);text-transform:uppercase;padding:16px 18px 10px}
@@ -255,16 +310,70 @@
         <div class="avatar"></div>
       </div>
 
+      <!-- profile -->
+      <div class="profile">
+        <div class="pf-avatar"></div>
+        <div class="pf-name">
+          <div class="pf-handle">atown</div>
+          <div class="pf-sub">@atownbrown · <span class="pos" style="font-size:10px">ACTIVE TRADER</span></div>
+        </div>
+        <button class="invitebtn">⊞ INVITE</button>
+      </div>
+
+      <!-- 1 · net worth -->
       <div class="summary">
-        <div class="sum-label">Open Positions</div>
+        <div class="sum-label">Net Worth</div>
+        <div class="networth">$535.46 <span class="nw-pnl pos">+$4.82 all-time</span></div>
+        <div class="split-bar">
+          <span class="seg rest" style="width:36.6%"></span>
+          <span class="seg locked" style="width:63.4%"></span>
+        </div>
+        <div class="split-legend">
+          <div><i class="dot rest"></i>AT REST <b>$195.79</b></div>
+          <div><i class="dot locked"></i>IN TRADES <b>$339.67</b></div>
+        </div>
+      </div>
+
+      <!-- 2 · P&L ledger -->
+      <div class="summary" style="padding-top:12px">
+        <div class="sum-label">P&L</div>
+        <div class="c-grid sum-grid">
+          <div class="cell hi"><div class="k">Open</div><div class="v neg">−$1.38</div></div>
+          <div class="cell hi"><div class="k">Realized</div><div class="v pos">+$6.20</div></div>
+          <div class="cell hi"><div class="k">All-Time</div><div class="v pos">+$4.82</div></div>
+        </div>
+      </div>
+
+      <!-- 3 · at rest: wallet hub + venue cash -->
+      <div class="summary" style="padding-top:14px">
+        <div class="sum-label">At Rest · $195.79</div>
+        <div class="wallet-card">
+          <div class="wc-top">
+            <span class="wc-k">TRADING WALLET · BASE USDC</span>
+            <span class="wc-v">$65.86</span>
+          </div>
+          <div class="wc-btns">
+            <button class="wbtn fill">↓ DEPOSIT</button>
+            <button class="wbtn">↑ WITHDRAW</button>
+          </div>
+        </div>
+        <div class="vcash">
+          <div class="vrow"><span class="vico hl">∞</span>Hyperliquid
+            <span class="vr"><span class="coin usdc">$</span>$20.31</span></div>
+          <div class="vrow"><span class="vico pm">◨</span>Polymarket <span class="curr">pUSD</span>
+            <span class="vr"><span class="coin usdc">$</span>$104.64</span></div>
+          <div class="vrow"><span class="vico rh">✒</span>Robinhood <span class="curr">USDG</span>
+            <span class="vr"><span class="coin usdg">G</span>$4.98</span></div>
+        </div>
+      </div>
+
+      <!-- 4 · in trades bridge -->
+      <div class="summary" style="padding-top:14px;padding-bottom:0">
+        <div class="sum-label">In Trades · Invested $341.05</div>
         <div class="c-grid sum-grid">
           <div class="cell hi"><div class="k">Value</div><div class="v">$339.67</div></div>
           <div class="cell hi"><div class="k">P&L</div><div class="v neg">−$1.38</div></div>
           <div class="cell hi"><div class="k">P&L %</div><div class="v neg">−0.4%</div></div>
-        </div>
-        <div class="sum-sub">
-          <div>INVESTED <b>$341.05</b></div>
-          <div>AVAILABLE <b>$129.93</b></div>
         </div>
       </div>
 
@@ -433,31 +542,41 @@
   <!-- ================= ANNOTATIONS ================= -->
   <aside class="notes">
     <h1>Portfolio — reimagined</h1>
-    <p class="sub">Organized <b>by venue</b>, matching your live build: Hyperliquid · Polymarket · Robinhood tabs with open-position counts, and <b>Open / Closed</b> tabs inside each venue. Rows stay compact snapshots; tapping one slides the 65% bottom sheet with the chart (entry marked) and full detail. Everything is clickable in the mockup.</p>
+    <p class="sub">The whole page is now one money story, top to bottom: <b>what am I worth → where is it → how am I doing → what's it deployed in</b>. Your current build answers these out of order (wallet first, net worth mid-page, venue chips duplicated by venue cards). Here each dollar appears exactly once, in exactly one section.</p>
 
     <div class="note">
-      <h2>1 · One money row, three levels</h2>
-      <p>Portfolio, venue, and position all report through the identical labeled Value · P&L $ · P&L % row. The venue rollup + its Available Balance sit at the top of each Open tab, so "what do I have here and what's it doing" is answered before the first row.</p>
+      <h2>1 · Net worth + the split bar</h2>
+      <p>The hero is <b>net worth</b> with all-time P&L beside it, and directly under it the answer to "where is my money": a two-segment bar splitting <b>At Rest $195.79</b> (deployable cash, green) from <b>In Trades $339.67</b> (capital locked in positions, orange). Your build's "In venues $691.26" conflated these — free venue cash and locked margin are opposite things: one you can spend, one is at risk.</p>
     </div>
 
     <div class="note">
-      <h2>2 · Venue tabs, like your build</h2>
-      <p>Venue-first matches how the money actually works — balances, fees, and settlement live per venue — and the count badge on each tab tells you where your open risk is before you switch. Robinhood shows its USDG balance; the others show USDC.</p>
+      <h2>2 · P&L ledger</h2>
+      <p>One row, three truths: <b>Open</b> (unrealized, changes with the market), <b>Realized</b> (banked), <b>All-Time</b> (their sum — the only honest scoreboard). Same labeled-cell treatment as every other number on the page. The "excludes 6 Polymarket exits" caveat belongs in a tap-through detail, not as body text under the hero.</p>
     </div>
 
     <div class="note">
-      <h2>3 · Open vs Closed</h2>
+      <h2>3 · At Rest — wallet hub + venue cash</h2>
+      <p>The <b>trading wallet</b> (Base USDC) is the hub — Deposit/Withdraw lives on it, since it's the door in and out of the system. Below it, one compact list of cash sitting inside each venue (pUSD, USDC, USDG), each a candidate to deploy or pull back to the wallet. This replaces your duplicated venue-chip grid + full-width venue cards: same information, one list, a third of the scroll.</p>
+    </div>
+
+    <div class="note">
+      <h2>4 · In Trades — the bridge into positions</h2>
+      <p>The locked-capital section leads with <b>Invested $341.05</b> in its header, then the standard Value · P&L $ · P&L % row for everything open. It sits directly above the positions list it summarizes — total → venue tabs → rows, each level a strict subtotal of the one above.</p>
+    </div>
+
+    <div class="note">
+      <h2>5 · Open vs Closed</h2>
       <p>Open rows are the live snapshot (identity + risk one-liner + value + P&L pill). Closed rows are <b>receipts</b>: ticker, close side · size @ price · date, realized P&L, and the explorer link. No chevron — they open the explorer, not the sheet.</p>
     </div>
 
     <div class="note">
-      <h2>4 · The sheet — chart first</h2>
+      <h2>6 · The sheet — chart first</h2>
       <p>Tapping an open row slides the bottom sheet: 1D price (or odds) with a <b>dashed line at your entry and a labeled dot at the moment you entered</b>, then basis row (Entry · Mark · Invested / Bet · To Win · Shares / Avg Cost for spot), performance row (Value · P&L · P&L %), the liq or odds meter (perps/predictions only — spot has none), venue + date, and Close / Cash out / Sell. Actions live only in the sheet.</p>
     </div>
 
     <div class="note">
-      <h2>5 · Dimensions covered</h2>
-      <p>All positions: entry, mark, $ invested, value, P&L $, P&L %. Perps add leverage, liq price, % to liquidation. Predictions add odds (entry → now), bet, to win, shares. Spot adds avg cost and share count. Venue level adds available balance per venue; portfolio level adds invested + total available.</p>
+      <h2>7 · The invariants</h2>
+      <p>Net Worth = At Rest + In Trades. At Rest = wallet + venue cash. In Trades value = sum of venue rollups = sum of position rows. All-Time = Open + Realized. Every number on the page is provably the sum of the numbers below it — that's what makes it feel trustworthy at a glance.</p>
     </div>
   </aside>
 
