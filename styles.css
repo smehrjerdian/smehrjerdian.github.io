@@ -570,6 +570,15 @@ section {
   border-radius: 10px;
   filter: none;
 }
+/* Tempo — official black square mark with the white T, full-bleed */
+.now__card-brand--tempo {
+  background: #000;
+  padding: 0;
+}
+.now__card-brand--tempo img {
+  width: 44px;
+  height: 44px;
+}
 
 .now__card-tag {
   display: inline-block;
@@ -663,6 +672,12 @@ section {
 .work__item-logo--inkubator img {
   max-height: 52px;
   max-width: 200px;
+}
+
+/* Tempo — official white wordmark (brand kit), wide aspect */
+.work__item-logo--tempo img {
+  max-height: 28px;
+  max-width: 140px;
 }
 
 /* WarnerMedia — logo ships on white bg with black text.
